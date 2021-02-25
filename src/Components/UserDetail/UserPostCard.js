@@ -216,8 +216,8 @@ const UserPostCard = ({
         <div className="post-title">{value.title}</div>
         <div className="post-content">{value.content_text}</div>
       </div>
-      {!cardError && <div className="error">{cardError}</div>}
-      {cardError && (
+      {cardError && <div className="error">{cardError}</div>}
+      {!cardError && (
         <>
           <div
             className="no-like"

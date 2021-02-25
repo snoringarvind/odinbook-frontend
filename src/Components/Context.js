@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
 
 import socketIOClient from "socket.io-client";
+import Login from "./Login/Login";
 
 const ENDPOINT = "https://odinbook12.herokuapp.com/odinbook";
 
@@ -106,40 +107,42 @@ const OdinBookProvider = ({ children }) => {
     const route = "/isUserAuth";
     const method = "GET";
 
-    if (jwtData) {
-      try {
-        const token = jwtData.token;
-        headers = { authorization: `Bearer ${token}` };
+    try {
+      const token = jwtData.token;
+      headers = { authorization: `Bearer ${token}` };
 
-        const response = await axios({
-          url: `${serverUrl}${route}`,
-          method: method,
-          data: token,
-          headers: headers,
-        });
+      const response = await axios({
+        url: `${serverUrl}${route}`,
+        method: method,
+        data: token,
+        headers: headers,
+      });
 
-        console.log("response from context login", response);
-        setIsAuth(true);
-        setLoading(false);
-      } catch (err) {
-        console.log("error from context login", err);
-        setLoading(false);
-        if (err.response) {
-          if (err.response.status == 403) {
-            setIsAuth(false);
-          }
+      console.log("response from context login", response);
+      setIsAuth(true);
+      setLoading(false);
+    } catch (err) {
+      console.log("error from context login", err);
+      setLoading(false);
+      if (err.response) {
+        if (err.response.status == 403) {
+          setIsAuth(false);
         }
       }
-    } else {
-      setIsAuth(false);
-      setLoading(false);
-      console.log("context login no jwt token");
     }
   };
 
   useEffect(() => {
+    console.log(isAuth);
     if (!isAuth) {
-      isLogin();
+      const jwt = localStorage.getItem("jwtData");
+      if (jwt) {
+        setJwtData(jwt);
+        isLogin();
+      } else {
+        setIsAuth(false);
+        setLoading(false);
+      }
     }
   }, [isAuth]);
 
