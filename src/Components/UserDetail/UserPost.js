@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, useLocation } from "react-router-dom";
 import { OdinBookContext } from "../Context";
 import uniqid from "uniqid";
 import MypostCreate from "../MyPosts/MyPostCreate";
@@ -9,6 +9,7 @@ import MyPostUpdate from "../MyPosts/MyPostUpdate";
 import UserPostCard from "./UserPostCard";
 import MyPostDelete from "../MyPosts/MyPostDelete";
 import WelcomeMsg from "../WelcomeMsg/WelcomeMsg";
+import UserFriend from "./UserFriend";
 
 const UserPost = ({ path }) => {
   const {
@@ -38,6 +39,7 @@ const UserPost = ({ path }) => {
   const [deleteClick, setDeleteClick] = useState(false);
   const [likeLength, setLikeLength] = useState([]);
 
+  const location = useLocation();
   //this is so we don't have to make request to the server to prefill the update form.
   const [updateData, setUpdateData] = useState("");
 
@@ -47,16 +49,19 @@ const UserPost = ({ path }) => {
 
   const [indexOfCardClicked, setindexOfCardClicked] = useState(null);
 
-  const location = useLocation();
+  const [myFriends, setMyFriends] = myFriendsValue;
 
   //putting in an if-block since in news feed location.state will be undefined
   let userid;
   let fname;
   let lname;
+  let from;
   if (path == "userpost") {
-    userid = location.state.userid;
-    fname = location.state.fname;
-    lname = location.state.lname;
+    const local_history = JSON.parse(localStorage.getItem("local_history"));
+    userid = local_history.userid;
+    fname = local_history.fname;
+    lname = local_history.lname;
+    from = local_history.from;
   }
 
   const get_posts = () => {
@@ -88,6 +93,9 @@ const UserPost = ({ path }) => {
 
       setResult(response.data);
       setGetLoading(false);
+
+      const h = Array(response.data.length).fill(false);
+      setLikeClick(h);
     };
 
     axios_request({
@@ -127,14 +135,14 @@ const UserPost = ({ path }) => {
         setIsOwner(false);
       }
     }
-  }, [location.pathname]);
+  }, [location.pathname, from]);
 
-  // useEffect(() => {
-  //   if (path === "newsfeed") {
-  //     get_posts();
-  //     setIsOwner(false);
-  //   }
-  // }, [myFriends]);
+  useEffect(() => {
+    if (path === "newsfeed") {
+      get_posts();
+      setIsOwner(false);
+    }
+  }, [myFriends.length]);
 
   const post_create_response = (response) => {
     setResult([response.data].concat(result));
@@ -164,26 +172,19 @@ const UserPost = ({ path }) => {
     setDeleteClick(false);
   };
 
-  const [likeClick, setLikeClick] = useState([]);
-  const [UserLikedIndex, setUsersLikedIndex] = useState(null);
-
   useEffect(() => {
-    if (location.state) {
-      if (
-        location.state.from === "/login" ||
-        location.state.from === "/signup"
-      ) {
-        const elemnt_welcome_msg = document.querySelector(
-          "#welcome_msg_unique"
-        );
-        if (elemnt_welcome_msg) {
-          elemnt_welcome_msg.addEventListener("click", (e) => {
-            setIsWelcomeMsgClick(true);
-          });
-        }
+    if (from === "/login" || from === "/signup") {
+      const elemnt_welcome_msg = document.querySelector("#welcome_msg_unique");
+      if (elemnt_welcome_msg) {
+        elemnt_welcome_msg.addEventListener("click", (e) => {
+          setIsWelcomeMsgClick(true);
+        });
       }
     }
   }, []);
+
+  const [likeClick, setLikeClick] = useState([]);
+  const [UserLikedIndex, setUsersLikedIndex] = useState(null);
   return (
     <div className={path == "userpost" ? "UserPost myaccount" : "UserPost"}>
       {error && <div className="error">{error}</div>}
@@ -193,9 +194,7 @@ const UserPost = ({ path }) => {
           {/* maybe we will show loading even for newsfeed for a second. */}
           {/* {getLoading && path !== "newsfeed" && "loading"} */}
           {!isWelcomeMsgClick &&
-            location.state &&
-            (location.state.from === "/login" ||
-              location.state.from === "/signup") &&
+            (from === "/login" || from === "/signup") &&
             path === "newsfeed" && <WelcomeMsg />}
           {getLoading && (
             <div className="loading-container">
@@ -265,14 +264,14 @@ const UserPost = ({ path }) => {
                       isOwner={isOwner}
                       setDeleteClick={setDeleteClick}
                       deleteClick={deleteClick}
-                      likeLength={likeLength}
-                      setLikeLength={setLikeLength}
                       likeClick={likeClick}
                       setLikeClick={setLikeClick}
                       postsLength={result.length}
+                      path={path}
+                      likeLength={likeLength}
+                      setLikeLength={setLikeLength}
                       UserLikedIndex={UserLikedIndex}
                       setUsersLikedIndex={setUsersLikedIndex}
-                      path={path}
                     />
                   );
                 })

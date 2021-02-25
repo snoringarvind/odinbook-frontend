@@ -1,10 +1,13 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, useRef } from "react";
 import CommentCard from "../CommentCard/CommentCard";
 import uniqid from "uniqid";
 import UserLikes from "./UserLikes";
 import { OdinBookContext } from "../Context";
-import { useLocation, Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import CommentCreate from "../Comment/CommentCreate";
+import UserNuLikes from "./UserNuLikes";
+import UserCardFooter from "./UserCardFooter";
+import { set } from "mongoose";
 
 const UserPostCard = ({
   value,
@@ -18,14 +21,14 @@ const UserPostCard = ({
   isOwner,
   setDeleteClick,
   deleteClick,
-  likeLength,
-  setLikeLength,
   setPostIndex,
   likeClick,
   setLikeClick,
   postsLength,
-  // UserLikedIndex,
-  // setUsersLikedIndex,
+  UserLikedIndex,
+  setUsersLikedIndex,
+  likeLength,
+  setLikeLength,
   path,
 }) => {
   const [cardError, setCardError] = useState("");
@@ -39,24 +42,29 @@ const UserPostCard = ({
   const [commentOptionIndex, setCommentOptionIndex] = useState(null);
   const { jwtData, axios_request } = useContext(OdinBookContext);
 
-  const [userLikedIndex, setUsersLikedIndex] = useState(null);
+  // const [UserLikedIndex, setUsersLikedIndex] = useState(false);
+  // const [likeLength, setLikeLength] = useState([]);
 
   const location = useLocation();
+
+  // console.log(likeLength);
   let fname;
   let lname;
   let username;
   let userid;
+  let from;
   if (path == "userpost") {
-    fname = location.state.fname;
-    lname = location.state.lname;
-    username = location.state.username;
-    userid = location.state.userid;
+    const local_history = JSON.parse(localStorage.getItem("local_history"));
+
+    fname = local_history.fname;
+    lname = local_history.lname;
   }
 
   const like_post = (postid) => {
     const like_post_route = `/post/${postid}/like`;
     const like_post_method = "POST";
     const cb_error = (err) => {
+      console.log(err);
       if (err.response) {
         setCardError(err.response.data);
       } else {
@@ -100,21 +108,8 @@ const UserPostCard = ({
     });
   };
 
-  let g = value.like.includes(jwtData.sub);
-
   const [pp, setpp] = useState(false);
 
-  useEffect(() => {
-    if (likeLength.length < postsLength) {
-      likeClick.push(g);
-      setLikeClick(likeClick);
-      likeLength.push(value.like.length);
-      setLikeLength(likeLength);
-      setpp(!pp);
-    }
-  }, []);
-
-  console.log(likeLength);
   //this useffect will render the page if the comment icon is clicked or there is change in comments.
   useEffect(() => {
     const element = document.querySelector(`#post-${index}`);
@@ -125,6 +120,16 @@ const UserPostCard = ({
     }
   }, [pp, commentIconClicked, commentsLoading]);
 
+  useEffect(() => {
+    const g = value.like.includes(jwtData.sub);
+    likeClick[index] = g;
+    setLikeClick(likeClick);
+    likeLength[index] = Number([value.like.length]);
+    setLikeLength(likeLength);
+    setpp(!pp);
+  }, []);
+
+  console.log(value, path);
   return (
     <div className="UserPostCard">
       <div className="head">
@@ -135,20 +140,28 @@ const UserPostCard = ({
         </div>
         <div className="name-container">
           <div className="name">
-            <Link
-              to={{
-                pathname: `/user/${value.user.username}/posts`,
-                state: {
-                  userid: value.user._id,
-                  fname: value.user.fname,
-                  lname: value.user.lname,
-                  username: value.user.username,
-                },
-              }}
-            >
-              <span>{fname ? fname : value.user.fname} </span>
-              <span>{lname ? lname : value.user.lname}</span>
-            </Link>
+            {path !== "userpost" && (
+              <Link
+                to={{
+                  pathname: `/user/${value.user.username}/posts`,
+                  state: {
+                    userid: value.user._id,
+                    fname: value.user.fname,
+                    lname: value.user.lname,
+                    username: value.user.username,
+                  },
+                }}
+              >
+                <span>{value.user.fname} </span>
+                <span>{value.user.lname}</span>
+              </Link>
+            )}
+            {path == "userpost" && (
+              <>
+                <span>{fname} </span>
+                <span>{lname}</span>
+              </>
+            )}
           </div>
 
           <div className="username">
@@ -216,28 +229,25 @@ const UserPostCard = ({
         <div className="post-title">{value.title}</div>
         <div className="post-content">{value.content_text}</div>
       </div>
-      {cardError && <div className="error">{cardError}</div>}
-      {!cardError && (
-        <>
-          <div
-            className="no-like"
-            onClick={(e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              setUsersLikedIndex(index);
-            }}
-          >
-            <span>{likeLength[index]} </span>
-            <span> {likeLength[index] == 1 ? "like" : "likes"}</span>
-          </div>
-          {userLikedIndex === index && (
-            <UserLikes
-              postid={value._id}
-              userid={value.user._id}
-              setUsersLikedIndex={setUsersLikedIndex}
-            />
-          )}
-        </>
+      <div
+        className="no-like"
+        onClick={(e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          setUsersLikedIndex(index);
+
+          setpp(!pp);
+        }}
+      >
+        {/* <span>{likeLength[index]} </span> */}
+        <span>{likeLength[index]} </span>
+
+        <span> </span>
+        <span> {likeLength[index] == 1 ? "like" : "likes"}</span>
+      </div>
+
+      {UserLikedIndex == index && (
+        <UserLikes postid={value._id} setUsersLikedIndex={setUsersLikedIndex} />
       )}
       <div className="card-footer">
         <div
@@ -249,10 +259,10 @@ const UserPostCard = ({
             e.preventDefault();
             like_post(value._id);
             if (likeClick[index] == true) {
-              likeLength[index] = likeLength[index] - 1;
+              likeLength[index] = Number(Number(likeLength[index]) - 1);
               setLikeLength(likeLength);
             } else {
-              likeLength[index] = likeLength[index] + 1;
+              likeLength[index] = Number(Number(likeLength[index]) + 1);
               setLikeLength(likeLength);
             }
             likeClick[index] = !likeClick[index];

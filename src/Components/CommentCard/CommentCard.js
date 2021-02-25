@@ -20,11 +20,6 @@ const CommentCard = ({
 }) => {
   const { jwtData } = useContext(OdinBookContext);
 
-  const location = useLocation();
-  let userid;
-  if (location.state) {
-    userid = location.state.userid;
-  }
   // const [commentUpdateClick, setCommentUpdateClick] = useState(false);
   const [commentDeleteClick, setCommentDeleteClick] = useState(false);
 

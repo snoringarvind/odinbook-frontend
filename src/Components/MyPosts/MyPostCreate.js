@@ -9,8 +9,9 @@ const MypostCreate = ({ user_post_response, createClick, setCreateClick }) => {
   const mypost_create_route = "/myposts";
   const mypost_create_method = "POST";
 
-  const location = useLocation();
-  const fname = location.state.fname;
+  const local_history = JSON.parse(localStorage.getItem("local_history"));
+
+  let fname = local_history.fname;
   return (
     <div className="MyPostCreate">
       <>

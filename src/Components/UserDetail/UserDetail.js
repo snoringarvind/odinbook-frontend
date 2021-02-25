@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import UserNav from "./UserNav";
 import { Route, Switch, useParams, useLocation, Link } from "react-router-dom";
 import UserAbout from "./UserAbout";
@@ -14,17 +14,16 @@ const UserDetail = () => {
 
   const { jwtData } = useContext(OdinBookContext);
 
-  let userid;
-  let fname;
-  let lname;
-  let username;
-  if (location.state.userid) {
-    fname = location.state.fname;
-    lname = location.state.lname;
-    username = location.state.username;
-    userid = location.state.userid;
-  }
+  const local_history = JSON.parse(localStorage.getItem("local_history"));
+  let userid = local_history.userid;
+  let fname = local_history.fname;
+  let lname = local_history.lname;
+  let username = local_history.username;
+  let from = local_history.from;
 
+  console.log(fname);
+
+  console.log(location);
   return (
     <div className="UserDetail">
       <div className="user-banner-container">
@@ -54,34 +53,34 @@ const UserDetail = () => {
 
         <div className="name-container">
           <div className="name">
-            <span>{location.state.fname} </span>
-            <span> {location.state.lname}</span>
+            <span>{fname} </span>
+            <span> {lname}</span>
           </div>
         </div>
       </div>
       <div className="UserNav">
         <UserNav
           to={`/user/${params.username}/posts`}
-          fname={location.state.fname}
-          lname={location.state.lname}
-          userid={location.state.userid}
-          username={location.state.username}
+          fname={fname}
+          lname={lname}
+          userid={userid}
+          username={username}
           label="Posts"
         />
         <UserNav
           to={`/user/${params.username}/about`}
-          fname={location.state.fname}
-          lname={location.state.lname}
-          userid={location.state.userid}
-          username={location.state.username}
+          fname={fname}
+          lname={lname}
+          userid={userid}
+          username={username}
           label="About"
         />
         <UserNav
           to={`/user/${params.username}/friends`}
-          fname={location.state.fname}
-          lname={location.state.lname}
-          userid={location.state.userid}
-          username={location.state.username}
+          fname={fname}
+          lname={lname}
+          userid={userid}
+          username={username}
           label="Friends"
         />
       </div>

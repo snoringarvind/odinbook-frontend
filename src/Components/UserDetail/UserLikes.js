@@ -2,7 +2,7 @@ import axios from "axios";
 import "./UserLikes.css";
 import UserLikesCard from "./UserLikesCard";
 import uniqid from "uniqid";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useContext, useState, useEffect } from "react";
 import { OdinBookContext } from "../Context";
 
@@ -22,6 +22,8 @@ const UserLikes = ({ postid, setUsersLikedIndex, userid }) => {
   const [didMyFriendsMount, setDidMyFriendsMount] = didMyFriendsMountValue;
 
   const [friendBtn, setFriendBtn] = useState([]);
+
+  const location = useLocation();
 
   const get_users_liked = () => {
     const route = `/post/${postid}/like`;
@@ -49,6 +51,8 @@ const UserLikes = ({ postid, setUsersLikedIndex, userid }) => {
       axios_response: cb_response,
     });
   };
+
+  console.log(location.pathname);
 
   //we will fetch the logged in users friends list incase if the myfriends was not loaded
   const get_myfriends = () => {
@@ -113,6 +117,7 @@ const UserLikes = ({ postid, setUsersLikedIndex, userid }) => {
                 myFriends={myFriends}
                 setMyFriends={setMyFriends}
                 userid={userid}
+                setUsersLikedIndex={setUsersLikedIndex}
               />
             );
           })}

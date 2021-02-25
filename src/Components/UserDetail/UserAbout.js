@@ -22,13 +22,8 @@ const UserAbout = () => {
   const [error, setError] = useState("");
 
   const location = useLocation();
-  let fname, lname, username, userid;
-  if (location.state) {
-    fname = location.state.fname;
-    lname = location.state.lname;
-    username = location.state.username;
-    userid = location.state.userid;
-  }
+  const local_history = JSON.parse(localStorage.getItem("local_history"));
+  let userid = local_history.userid;
 
   const [clickIndex, setClickIndex] = useState(null);
 

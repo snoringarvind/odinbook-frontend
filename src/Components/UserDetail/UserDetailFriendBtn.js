@@ -19,16 +19,12 @@ const UserDetailFriendBtn = () => {
   const [friendBtn, setFriendBtn] = useState(false);
 
   const location = useLocation();
-  let userid;
-  let username;
-  let fname;
-  let lname;
-  if (location.state) {
-    userid = location.state.userid;
-    fname = location.state.fname;
-    lname = location.state.lname;
-    username = location.state.username;
-  }
+
+  const local_history = JSON.parse(localStorage.getItem("local_history"));
+  let userid = local_history.userid;
+  let fname = local_history.fname;
+  let lname = local_history.lname;
+  let username = local_history.username;
 
   //we will fetch the logged in users friends list incase if the myfriends was not loaded
   const get_myfriends = () => {

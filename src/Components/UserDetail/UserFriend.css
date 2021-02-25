@@ -55,12 +55,19 @@
   margin-right: 30px;
   /* border: 1px solid; */
   flex-basis: 100%;
+  line-height: 100%;
 }
 
 .UserFriend .name-container a {
   /* border: 1px solid; */
   display: block;
   width: fit-content;
+  text-decoration: none;
+  color: black;
+}
+
+.UserFriend .name-container a:hover {
+  text-decoration: underline;
 }
 .UserFriend .name-container .name {
   /* border: 1px solid; */
@@ -97,7 +104,7 @@
 
 .UserFriend:not(.UserFriend.myaccount) {
   overflow-y: auto;
-  min-height: 89vh;
+  height: 89vh;
 }
 .UserFriend.myaccount {
   /* border: 1px solid green; */

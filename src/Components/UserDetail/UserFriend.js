@@ -27,9 +27,10 @@ const UserFriend = ({ path }) => {
   let lname;
   //since there will be no location.state for myfriends route.
   if (path !== "myfriends") {
-    userid = location.state.userid;
-    fname = location.state.fname;
-    lname = location.state.lname;
+    const local_history = JSON.parse(localStorage.getItem("local_history"));
+    userid = local_history.userid;
+    fname = local_history.fname;
+    lname = local_history.lname;
   }
 
   const make_server_request = () => {

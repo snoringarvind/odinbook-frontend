@@ -85,7 +85,6 @@ const UserFriendCard = ({
     }
     setpp(!pp);
   }, []);
-
   return (
     <div className="UserFriendCard">
       {error && <div className="error">{error}</div>}

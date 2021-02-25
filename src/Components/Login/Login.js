@@ -5,7 +5,7 @@ import { Redirect, useHistory } from "react-router-dom";
 import "./Login.css";
 
 const Login = () => {
-  const { axios_request, isAuthValue } = useContext(OdinBookContext);
+  const { axios_request } = useContext(OdinBookContext);
   const [isloginClick, setIsLoginClick] = useState(false);
 
   const refUsername = useRef();

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { OdinBookContext } from "../Context";
 import "./UserLikes.css";
+import { Link } from "react-router-dom";
 
 const UserLikesCard = ({
   value,
@@ -9,6 +10,7 @@ const UserLikesCard = ({
   setFriendBtn,
   myFriends,
   setMyFriends,
+  setUsersLikedIndex,
 }) => {
   const [pp, setpp] = useState(false);
   const { axios_request, jwtData } = useContext(OdinBookContext);
@@ -65,13 +67,24 @@ const UserLikesCard = ({
 
       {!error && (
         <>
-          {" "}
           <div className="profile-picture">
             {[...value.fname[0].toLowerCase()]}
           </div>
           <div className="name">
-            <span>{value.fname}</span>
-            <span>{value.lname}</span>
+            <Link
+              to={{
+                pathname: `/user/${value.username}/posts`,
+                state: {
+                  userid: value._id,
+                  fname: value.fname,
+                  lname: value.lname,
+                  username: value.username,
+                },
+              }}
+            >
+              <span>{value.fname}</span>
+              <span>{value.lname}</span>
+            </Link>
           </div>
           {jwtData.sub !== value._id && (
             <div

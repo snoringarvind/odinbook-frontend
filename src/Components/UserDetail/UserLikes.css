@@ -74,6 +74,15 @@
   /* border: 1px solid; */
 }
 
+.UserLikes .UserLikesCard .name a {
+  text-decoration: none;
+  color: black;
+}
+
+.UserLikes .UserLikesCard .name a:hover {
+  text-decoration: underline;
+}
+
 .UserLikes .UserLikesCard .add-btn-container {
   background-color: darkgray;
   min-width: 30px;

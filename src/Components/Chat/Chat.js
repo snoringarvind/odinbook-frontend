@@ -14,10 +14,11 @@ const Chat = () => {
   );
 
   //this detail are of the person on whose chat btn we clicked
-  const fname = location.state.fname;
-  const lname = location.state.lname;
-  const userid = location.state.userid;
-  const username = location.state.username;
+  const local_history = JSON.parse(localStorage.getItem("local_history"));
+  let userid = local_history.userid;
+  let fname = local_history.fname;
+  let lname = local_history.lname;
+  let username = local_history.username;
 
   const [tempResponse, setTempResponse] = useState([]);
   const [response, setResponse] = useState([]);

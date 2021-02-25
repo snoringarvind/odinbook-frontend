@@ -42,6 +42,11 @@
 .UserPost .UserPostCard .head .name-container .name a {
   display: block;
   text-decoration: none;
+  color: black;
+}
+
+.UserPost .UserPostCard .head .name-container .name a:hover {
+  text-decoration: underline;
 }
 
 .UserPost .UserPostCard .head .username {
@@ -50,7 +55,7 @@
 
 .UserPost .UserPostCard .head {
   display: flex;
-  border: 1px solid;
+  /* border: 1px solid; */
   align-items: center;
   margin-bottom: 10px;
 }
@@ -133,6 +138,7 @@
   /* border: 1px solid; */
   /* color: rgb(61, 61, 61); */
   color: black;
+  font-size: 1.3rem;
   font-family: Georgia, "Times New Roman", Times, serif;
 }
 
@@ -213,9 +219,9 @@
 }
 
 .UserPost:not(.UserPost.myaccount) {
-  /* border: 1px solid red; */
+  border: 1px solid red;
   margin-top: 7vh;
-  min-height: 93vh;
+  height: 93vh;
   overflow-y: auto;
 }
 
