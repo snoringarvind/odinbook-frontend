@@ -5,7 +5,7 @@ import socketIOClient from "socket.io-client";
 import Login from "./Login/Login";
 import UserFriend from "./UserDetail/UserFriend";
 
-const ENDPOINT = "https://odinbook12.herokuapp.com/odinbook";
+const ENDPOINT = "https://odinbook12.herokuapp.com";
 
 // require("dotenv").config();
 
