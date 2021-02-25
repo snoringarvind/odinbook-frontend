@@ -3,6 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 
 import socketIOClient from "socket.io-client";
 import Login from "./Login/Login";
+import UserFriend from "./UserDetail/UserFriend";
 
 const ENDPOINT = "https://odinbook12.herokuapp.com/odinbook";
 
@@ -136,17 +137,23 @@ const OdinBookProvider = ({ children }) => {
     console.log(isAuth);
     if (!isAuth) {
       const jwt = JSON.parse(localStorage.getItem("jwtData"));
-      console.log(jwt);
       if (jwt) {
         setJwtData(jwt);
-        console.log(jwt);
-        isLogin();
       } else {
         setIsAuth(false);
         setLoading(false);
       }
     }
-  }, [isAuth]);
+  }, []);
+
+  useEffect(() => {
+    if (jwtData && !isAuth) {
+      isLogin();
+    } else {
+      setIsAuth(false);
+      setLoading(false);
+    }
+  }, [jwtData, isAuth]);
 
   useEffect(() => {
     if (isAuth) {
