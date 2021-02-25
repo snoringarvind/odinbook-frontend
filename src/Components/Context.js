@@ -45,9 +45,7 @@ const OdinBookProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
 
   // let jwt = JSON.parse(localStorage.getItem("jwtData"));
-  const [jwtData, setJwtData] = useState(
-    JSON.parse(localStorage.getItem("jwtData"))
-  );
+  const [jwtData, setJwtData] = useState();
 
   let serverUrl = "https://odinbook12.herokuapp.com/odinbook";
 
@@ -138,18 +136,24 @@ const OdinBookProvider = ({ children }) => {
       console.log("context login no jwt token");
     }
   };
+
   useEffect(() => {
-    isLogin();
-
-    const socket12 = socketIOClient(ENDPOINT, {
-      withCredentials: true,
-    });
-
-    setSocket(socket12);
-    if (jwtData) {
-      socket12.emit("join", jwtData.user);
+    if (!isAuth) {
+      isLogin();
     }
-  }, []);
+  }, [isAuth]);
+
+  useEffect(() => {
+    if (isAuth) {
+      const socket12 = socketIOClient(ENDPOINT, {
+        withCredentials: true,
+      });
+      setSocket(socket12);
+      if (jwtData) {
+        socket12.emit("join", jwtData.user);
+      }
+    }
+  }, [isAuth]);
 
   return (
     <OdinBookContext.Provider

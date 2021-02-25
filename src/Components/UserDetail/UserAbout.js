@@ -30,12 +30,11 @@ const UserAbout = () => {
     userid = location.state.userid;
   }
 
-  const profile_route = `/profile/${userid}`;
-  const profile_route_method = "GET";
-
   const [clickIndex, setClickIndex] = useState(null);
 
   const make_server_request = () => {
+    const profile_route = `/profile/${userid}`;
+    const profile_route_method = "GET";
     const cb_response = (response) => {
       if (userid === jwtData.sub) {
         setMyAbout(response.data);
