@@ -1,7 +1,5 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
-import socketIOClient, { io } from "socket.io-client";
 import { OdinBookContext } from "../Context";
 import "./Chat.css";
 import ChatCard from "./ChatCard";
@@ -21,8 +19,6 @@ const Chat = () => {
   const userid = location.state.userid;
   const username = location.state.username;
 
-  console.log(userid);
-
   const [tempResponse, setTempResponse] = useState([]);
   const [response, setResponse] = useState([]);
   const [msgArr, setMsgArr] = useState([]);
@@ -36,8 +32,6 @@ const Chat = () => {
 
   useEffect(() => {
     socket.on("new_msg", (data) => {
-      console.log(data);
-
       setTempResponse([
         ...tempResponse,
         { message: data.message, createdAt: data.createdAt },
@@ -45,14 +39,12 @@ const Chat = () => {
     });
   }, [socket]);
 
-  console.log(msgArr);
   useEffect(() => {
     if (tempResponse.length !== 0) {
       setMsgArr([...msgArr, ...tempResponse]);
     }
   }, [tempResponse]);
 
-  console.log(msgArr, "48 msgArr");
   useEffect(() => {
     const h = async () => {
       await Promise.all([get_responses(), get_my_messages()]);
@@ -67,12 +59,10 @@ const Chat = () => {
   // get the messages I sent to Komal
   const get_responses = () => {
     // sender = jwtData.sub
-    console.log("get responses");
     const route = `/chat/${userid}/${jwtData.sub}`;
     const method = "GET";
 
     const cb_response = (response) => {
-      console.log(response);
       if (response.data.length !== 0) {
         let newArr = response.data.message_container.map((v) => ({
           ...v,
@@ -83,7 +73,6 @@ const Chat = () => {
         //it might happen that there are no sent messages.
         setResponse([{ message: "", createdAt: "" }]);
       }
-      console.log(response, "get responses");
 
       setresponseloading(false);
     };
@@ -107,12 +96,10 @@ const Chat = () => {
 
   // the messages Komal sent to me
   const get_my_messages = () => {
-    console.log("my messages");
     const route = `/chat/${jwtData.sub}/${userid}`;
     const method = "GET";
 
     const cb_response = (response) => {
-      console.log(response, "get my messages");
       if (response.data.length !== 0) {
         setMyMsg(response.data.message_container);
       } else {
@@ -142,17 +129,14 @@ const Chat = () => {
   useEffect(() => {
     if (!mymsgloading && !responseloading) {
       let arr = [...response, ...myMsg];
-      console.log(arr);
 
       let sorted = arr.sort((a, b) => {
-        // console.log(a, b);
         return a.createdAt < b.createdAt
           ? -1
           : a.createdAt > b.createdAt
           ? 1
           : 0;
       });
-      console.log(sorted);
 
       setMsgArr(sorted);
     }
@@ -192,14 +176,12 @@ const Chat = () => {
 
   useEffect(() => {
     const element = document.querySelector(".Chat");
-    console.log(element);
+
     const height = element.scrollHeight;
-    console.log(height);
+
     element.scrollTo(0, height);
   }, [msgArr]);
 
-  console.log(mymsgloading, responseloading);
-  console.log(msgArr);
   return (
     <div className="Chat">
       {error && <div className="error">{error}</div>}
@@ -220,7 +202,6 @@ const Chat = () => {
               username={username}
               msgArr={msgArr}
               setMsgArr={setMsgArr}
-              responseloading={responseloading}
             />
           )}
         </>

@@ -5,15 +5,7 @@ import {
   Switch,
   useHistory,
   useLocation,
-  useParams,
 } from "react-router-dom";
-import MyPostUpdate from "../MyPosts/MyPostUpdate";
-import MyPostList from "../MyPosts/MyPostList";
-import MyPostCreate from "../MyPosts/MyPostCreate";
-// import MyPostDetail from "../MyPosts/MyPostDetail";
-import MyPostDelete from "../MyPosts/MyPostDelete";
-import NewsFeed from "../NewsFeed/NewsFeed";
-import PostDetail from "../NewsFeed/PostDetail";
 import Navigation from "../Navigation/Navigation";
 import Login from "../Login/Login";
 import Logout from "../Logout";
@@ -23,14 +15,11 @@ import SearchBar from "../Search/SearchBar";
 import SearchResult from "../Search/SearchResult";
 import UserDetail from "../UserDetail/UserDetail";
 import Hamburger from "../Hamburger/Hamburger";
-import MyFriends from "../MyFriends/MyFriends";
-// import { OdinBookContext } from "../Context";
 import UserPost from "../UserDetail/UserPost";
 import UserFriend from "../UserDetail/UserFriend";
 import { OdinBookContext } from "../Context";
 import Chat from "../Chat/Chat";
 import ChatList from "../ChatList/ChatList";
-import WelcomeMsg from "../WelcomeMsg/WelcomeMsg";
 
 const Home = () => {
   let location = useLocation();
@@ -39,23 +28,9 @@ const Home = () => {
 
   const { isAuthValue, jwtData } = useContext(OdinBookContext);
   const [isAuth, setIsAuth] = isAuthValue;
-  // console.log(isAuth);
 
-  const history = useHistory();
-  // console.log(history);
-
-  // console.log(location.pathname);
-
-  console.log(location);
   const path = location.pathname;
 
-  const ref_isClick = useRef();
-
-  if (ref_isClick.current) {
-    console.log(ref_isClick.current);
-  }
-
-  console.log(path);
   useEffect(() => {
     const x = window;
     x.addEventListener("click", (e) => {
@@ -93,7 +68,6 @@ const Home = () => {
     });
   }, []);
 
-  console.log(path);
   return (
     <div className="Home">
       {!isAuth && <div className="odin-book">OdinBook</div>}
@@ -104,9 +78,6 @@ const Home = () => {
           <Redirect to="/login" />
         ))}
 
-      {/* {isAuth && (path === "/login" || path === "/signup") && <WelcomeMsg />} */}
-
-      {/* {!isAuth && path === "/login"} */}
       {isAuth && (path === "/login" || path === "/signup") && (
         <Redirect to={{ pathname: "/", state: { from: path } }} />
       )}
@@ -114,7 +85,6 @@ const Home = () => {
       {isAuth && (
         <>
           <div className="Navigation">
-            {/* <div className="nav-bar-title">Odinbook</div> */}
             {/* width 68% */}
             <SearchBar />
             <div className="left-nav">
@@ -135,7 +105,6 @@ const Home = () => {
                   e.stopPropagation();
                   setIsclick(!isClick);
                 }}
-                ref={ref_isClick}
               >
                 {isClick ? (
                   <div className="close-icon fas fa-times-circle"></div>
@@ -186,31 +155,6 @@ const Home = () => {
             </Route>
           </>
         )}
-
-        {/* <Route path="/user/:username/:">
-          <UserDetail />
-        </Route> */}
-        {/* <Route path="/myposts">
-          <MyPostList />
-        </Route> */}
-        {/* <Route path="/update-post/:mypostid">
-          <MyPostUpdate />
-        </Route> */}
-        {/* <Route exact path="/mypost/:mypostid">
-          <MyPostDetail />
-        </Route> */}
-        {/* <Route path="/create-post">
-          <MyPostCreate />
-        </Route> */}
-        {/* <Route path="/news-feed/:postid">
-          <PostDetail />
-        </Route> */}
-
-        {/* <Route exact path="/account">
-          my-Account
-        </Route> */}
-
-        {/* &&&&&& */}
       </Switch>
 
       {/* <Route path="/delete-post/mypost:id">

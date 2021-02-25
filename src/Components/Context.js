@@ -1,8 +1,6 @@
 import axios from "axios";
 import React, { createContext, useEffect, useState } from "react";
-import async from "async";
-// import { response } from "express";
-import { Switch, useLocation } from "react-router-dom";
+
 import socketIOClient from "socket.io-client";
 
 const ENDPOINT = "https://odinbook12.herokuapp.com/odinbook";
@@ -12,7 +10,6 @@ const ENDPOINT = "https://odinbook12.herokuapp.com/odinbook";
 const OdinBookContext = createContext();
 
 const OdinBookProvider = ({ children }) => {
-  // console.log(process.env.REACT_APP_API_KEY);
   // ex. http://localhost:3000/odinbook
   // const [serverUrl] = useState("http://localhost:3000/odinbook");
 
@@ -52,7 +49,7 @@ const OdinBookProvider = ({ children }) => {
     JSON.parse(localStorage.getItem("jwtData"))
   );
 
-  let serverUrl = "https://odinbook12.herokuapp.com";
+  let serverUrl = "https://odinbook12.herokuapp.com/odinbook";
 
   const axios_request = async ({
     route,
@@ -61,12 +58,7 @@ const OdinBookProvider = ({ children }) => {
     axios_error,
     axios_response,
   }) => {
-    // console.log("hello");
-    // const serverUrl = process.env.serverUrl;
-
-    // console.log(jwtData);
     if (jwtData !== null || route === "/login" || route === "/signup") {
-      // console.log("helllo");
       try {
         let token;
         let headers;
@@ -75,16 +67,12 @@ const OdinBookProvider = ({ children }) => {
           headers = { authorization: `Bearer ${token}` };
         }
 
-        // console.log(data);
-        // console.log(method);
-        // console.log(route);
         const response_data = await axios({
           url: `${serverUrl}${route}`,
           method: method,
           headers: headers || "",
           data: data,
         });
-        // console.log(jwtData);
 
         if (route === "/login" || route === "/signup") {
           localStorage.setItem(
@@ -119,13 +107,11 @@ const OdinBookProvider = ({ children }) => {
   const isLogin = async () => {
     const route = "/isUserAuth";
     const method = "GET";
-    // console.log(process.env.REACT_APP_API_KEY);
 
     if (jwtData) {
       try {
         const token = jwtData.token;
         headers = { authorization: `Bearer ${token}` };
-        console.log(headers);
 
         const response = await axios({
           url: `${serverUrl}${route}`,
@@ -160,7 +146,6 @@ const OdinBookProvider = ({ children }) => {
     });
 
     setSocket(socket12);
-    console.log(loading);
     if (jwtData) {
       socket12.emit("join", jwtData.user);
     }

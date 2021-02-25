@@ -1,6 +1,5 @@
-import { concatSeries } from "async";
-import React, { useContext, useRef, useState } from "react";
-import { Link, Redirect, useHistory, useParams } from "react-router-dom";
+import React, { useContext, useRef } from "react";
+import { useHistory } from "react-router-dom";
 import { OdinBookContext } from "../Context";
 import "./SearchBar.css";
 
@@ -12,12 +11,10 @@ const SearchBar = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(ref_name.current.value);
     setSearchValueChange(true);
     if (ref_name.current.value === "") {
       return;
     } else {
-      console.log(ref_name.current.value);
       return history.push(`/search/${ref_name.current.value}`);
     }
   };

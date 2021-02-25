@@ -22,42 +22,32 @@ const MyPostForm = ({
 
   const [postLoading, setPostLoading] = useState(false);
 
-  const history = useHistory();
-
   const refTitle = useRef();
   const refContenText = useRef();
-
-  console.log(refTitle);
 
   useEffect(() => {
     refTitle.current.value = update_value ? update_value.title : "";
     refContenText.current.value = update_value ? update_value.content_text : "";
   }, []);
-  console.log(update_value);
 
   const submitHandler = () => {
     setPostLoading(true);
     const axios_error = (err) => {
       if (err.response) {
-        console.log(err.response.data);
         setErrors(err.response.data);
       } else {
-        console.log(err.message);
         setError(err.message);
       }
       setPostLoading(false);
     };
 
     const axios_response = (response) => {
-      console.log(response);
       setErrors([]);
       setPostLoading(false);
       user_post_response(response);
       setCreateClick(false);
-      // setUpdateClick(false);
     };
 
-    console.log(refTitle.current.value);
     axios_request({
       route: route,
       data: {
@@ -83,11 +73,6 @@ const MyPostForm = ({
 
     return <ul className="errors">{arr}</ul>;
   };
-
-  const location = useLocation();
-  console.log(location.state);
-  const params = useParams();
-  console.log(params);
 
   return (
     <div className="MyPostForm">

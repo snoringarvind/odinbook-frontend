@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./ChatMap.css";
 
 const ChatMap = ({ value, index }) => {
@@ -8,7 +8,6 @@ const ChatMap = ({ value, index }) => {
   if (value.createdAt !== "") {
     d = new Date(value.createdAt);
 
-    // console.log(d.getFullYear());
     yearstr = d.getFullYear().toString();
     splityear = [...yearstr];
   }

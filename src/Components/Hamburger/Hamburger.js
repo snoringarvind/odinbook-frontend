@@ -5,9 +5,6 @@ import "./Hamburger.css";
 
 const Hamburger = () => {
   const { jwtData } = useContext(OdinBookContext);
-  console.log(jwtData);
-
-  console.log(jwtData);
 
   return (
     <div className="Hamburger">

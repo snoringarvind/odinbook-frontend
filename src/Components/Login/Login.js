@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { OdinBookContext } from "../Context";
 import uniqid from "uniqid";
 import { Redirect, useHistory } from "react-router-dom";
@@ -6,7 +6,6 @@ import "./Login.css";
 
 const Login = () => {
   const { axios_request, isAuthValue } = useContext(OdinBookContext);
-  const [isAuth, setIsAuth] = isAuthValue;
   const [isloginClick, setIsLoginClick] = useState(false);
 
   const refUsername = useRef();
@@ -59,14 +58,6 @@ const Login = () => {
 
     return <ul className="errors">{arr}</ul>;
   };
-
-  const history = useHistory();
-
-  // useEffect(() => {
-  //   if (isAuth == true) {
-  //     history.push("/");
-  //   }
-  // }, [isAuth]);
 
   return (
     <div className="Login">

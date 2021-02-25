@@ -1,8 +1,8 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import "./CommentCard.css";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { OdinBookContext } from "../Context";
-import CommentUpdate from "../Comment/CommentUpdate";
+// import CommentUpdate from "../Comment/CommentUpdate";
 import CommentDelete from "../Comment/CommentDelete";
 
 const CommentCard = ({
@@ -18,23 +18,14 @@ const CommentCard = ({
   pp,
   setpp,
 }) => {
-  // console.log(comment);
-  // console.log(path);
-
   const { jwtData } = useContext(OdinBookContext);
-
-  // const [isChanged, setIsChanged] = useState(false);
 
   const location = useLocation();
   let userid;
   if (location.state) {
     userid = location.state.userid;
   }
-  // console.log(comment.user._id, jwtData.sub, path);
-  // console.log(isChanged);
-  // useEffect(() => {}, [isChanged]);
-  // console.log(commentOptionIndex);
-  const [commentUpdateClick, setCommentUpdateClick] = useState(false);
+  // const [commentUpdateClick, setCommentUpdateClick] = useState(false);
   const [commentDeleteClick, setCommentDeleteClick] = useState(false);
 
   return (

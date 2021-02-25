@@ -1,7 +1,5 @@
-import { Result } from "express-validator";
-import { set } from "mongoose";
 import React, { useContext, useEffect, useState } from "react";
-import { Link, useHistory, useLocation, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { OdinBookContext } from "../Context";
 
 const SearchResultCard = ({
@@ -22,23 +20,18 @@ const SearchResultCard = ({
 
   //removes friend
   const clickHandler = () => {
-    // setIsClicked(!isClicked);
-
     const route = `/friend/${value._id}`;
     const method = "POST";
 
     const cb_error = (err) => {
       if (err.response) {
-        console.log(err.response.data);
+        setError(err.response.data);
       } else {
         setError(err.message);
       }
     };
 
-    const cb_response = (response) => {
-      // console.log(response);
-      // setResponse(response.data);
-    };
+    const cb_response = (response) => {};
 
     axios_request({
       route: route,
@@ -48,12 +41,11 @@ const SearchResultCard = ({
       axios_response: cb_response,
     });
 
-    if (friendBtn[index] == false) {
+    if (friendBtn[index] === false) {
       const get_index = myFriends.findIndex(
-        (x) => x.username == value.username
+        (x) => x.username === value.username
       );
       if (get_index !== -1) {
-        console.log(get_index);
         myFriends.splice(get_index, 1);
         setMyFriends(myFriends);
       }
@@ -66,18 +58,16 @@ const SearchResultCard = ({
 
   useEffect(() => {
     const check = myFriends.findIndex((x) => x.username === value.username);
-    console.log(check);
+
     if (check !== -1) {
       friendBtn[index] = true;
       setFriendBtn(friendBtn);
-      // setMyFriendsIndex(check);
     }
     setpp(!pp);
   }, []);
 
   const element = document.querySelector("#search");
-  // console.log(element.value);
-  console.log(myFriendsIndex);
+
   return (
     <div className="SearchResultCard">
       {error && <div className="error">{error}</div>}

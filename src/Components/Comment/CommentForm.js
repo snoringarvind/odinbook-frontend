@@ -16,7 +16,6 @@ const CommentForm = ({
 }) => {
   const { jwtData, axios_request } = useContext(OdinBookContext);
 
-  console.log(comments);
   const valueRef = useRef();
 
   const [errors, setErrors] = useState([]);
@@ -40,8 +39,6 @@ const CommentForm = ({
 
     setpp(!pp);
 
-    console.log(postIndex);
-
     if (element) {
       const remove_empty = element.querySelector(`#post-${postIndex} .empty`);
       if (remove_empty) {
@@ -49,14 +46,8 @@ const CommentForm = ({
       }
     }
 
-    // setNewCommentLoading(true);
-
-    console.log(element);
-
     const cb_error = (err) => {
-      console.log(err);
       if (err.response) {
-        console.log(err.response.data);
         setErrors(err.response.data);
       } else {
         setError(err.message);
@@ -66,7 +57,6 @@ const CommentForm = ({
       setErrors([]);
     };
 
-    // console.log(valueRef.current.value);
     axios_request({
       route: route,
       data: { comment: valueRef.current.value },
@@ -92,7 +82,6 @@ const CommentForm = ({
     return <ul className="errors">{arr}</ul>;
   };
 
-  console.log(valueRef);
   return (
     <div className="CommentForm">
       {error && <div className="error">{error}</div>}
@@ -104,12 +93,10 @@ const CommentForm = ({
           <form
             onSubmit={(e) => {
               e.preventDefault();
-              console.log(valueRef);
 
               if (valueRef.current.value == "") {
                 return;
               } else {
-                console.log(valueRef.current.value);
                 post_comment();
               }
             }}

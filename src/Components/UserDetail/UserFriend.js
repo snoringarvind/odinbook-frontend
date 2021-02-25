@@ -1,11 +1,9 @@
-import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation, Link, useParams, useHistory } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { OdinBookContext } from "../Context";
 import uniqid from "uniqid";
 import "./UserFriend.css";
 import UserFriendCard from "./UserFriendCard";
-import async from "async";
 
 const UserFriend = ({ path }) => {
   const [error, setError] = useState("");
@@ -28,26 +26,18 @@ const UserFriend = ({ path }) => {
   let fname;
   let lname;
   //since there will be no location.state for myfriends route.
-  if (path != "myfriends") {
+  if (path !== "myfriends") {
     userid = location.state.userid;
     fname = location.state.fname;
     lname = location.state.lname;
   }
 
-  // const params = useParams();
-  // console.log("params", params);
-  // const history = useHistory();
-  // console.log("histroy", history);
-
-  // console.log(path);
   const make_server_request = () => {
     let friend_list_route;
     if (path == "myfriends") {
       friend_list_route = `/friend/${jwtData.sub}`;
-      console.log(path);
     } else {
       friend_list_route = `/friend/${userid}`;
-      console.log(userid);
     }
     const friend_list_method = "GET";
 
@@ -107,13 +97,8 @@ const UserFriend = ({ path }) => {
         }
       }
     }
-
-    // get_my_friend_list();
   }, [location.pathname]);
 
-  // console.log(myFriendList);
-  // console.log(result);
-  console.log(path);
   return (
     <div
       className={path === "myfriends" ? "UserFriend" : "UserFriend myaccount"}

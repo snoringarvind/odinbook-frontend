@@ -7,7 +7,7 @@ import "./ChatList.css";
 const ChatList = () => {
   const {
     axios_request,
-    jwtData,
+
     myChatListValue,
     didMyChatListMountValue,
     isReadValue,
@@ -39,13 +39,11 @@ const ChatList = () => {
     };
 
     const cb_response = (response) => {
-      // console.log(response);
       const a = response.data.received;
       const b = response.data.sent;
-      // console.log(b);
+
       if (b.length > 0) {
         a.forEach((value) => {
-          // console.log(value);
           const dupl_index = b.findIndex((x) => x.user._id === value.user._id);
           if (dupl_index !== -1) {
             b.splice(dupl_index, 1);
@@ -56,7 +54,6 @@ const ChatList = () => {
       const c = [...a, ...b];
 
       const sort_arr = c.sort((a, b) => {
-        // console.log(a.last_msg);
         return b.last_msg < a.last_msg ? -1 : b.last_msg > a.last_msg ? 1 : 0;
       });
 
@@ -86,7 +83,6 @@ const ChatList = () => {
       }
     };
     const cb_response = (response) => {
-      // console.log(response.data.users);
       setIsRead(response.data.users);
       setIsreadLoading(false);
     };
@@ -101,7 +97,6 @@ const ChatList = () => {
   };
 
   useEffect(() => {
-    // console.log(didMyChatListMount);
     if (didMyChatListMount) {
       get_chat_list();
       get_isread();
@@ -114,21 +109,15 @@ const ChatList = () => {
 
   useEffect(() => {
     socket.on("new_msg", (data) => {
-      // console.log(data);
-
       settempIsread(data);
     });
   }, [socket]);
 
   useEffect(() => {
     if (tempIsread.length !== 0) {
-      console.log("tempisread=", tempIsread);
-      console.log("isread=", isRead);
-
       const is_read_index = isRead.findIndex(
         (x) => x.user === tempIsread.from.userid
       );
-      console.log("is-read-index=", is_read_index);
       if (is_read_index !== -1) {
         if (isRead[is_read_index].isread[0] === true) {
           isRead[is_read_index].isread.splice(0, 1);
@@ -142,8 +131,7 @@ const ChatList = () => {
       const check = myChatList.findIndex(
         (x) => x.user._id === tempIsread.from.userid
       );
-      console.log("check=", check);
-      console.log(myChatList);
+
       if (check !== -1) {
         myChatList[check].last_msg = new Date().toISOString();
       } else {
@@ -167,8 +155,6 @@ const ChatList = () => {
     }
   }, [tempIsread]);
 
-  console.log(myChatList);
-  // console.log(isRead);
   return (
     <div className="ChatList">
       {error && <div className="errorr">{error}</div>}

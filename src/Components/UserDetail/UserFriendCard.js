@@ -12,13 +12,6 @@ const UserFriendCard = ({
   setIsChanged,
   path,
 }) => {
-  // const params = useParams();
-  // console.log("params", params);
-  // const history = useHistory();
-  // console.log("histroy", history);
-  console.log(friendBtn[index]);
-
-  const [myFriendsIndex, setMyFriendsIndex] = useState(null);
   const [error, setError] = useState("");
 
   const { jwtData, myFriendsValue, axios_request } = useContext(
@@ -26,7 +19,7 @@ const UserFriendCard = ({
   );
 
   const [myFriends, setMyFriends] = myFriendsValue;
-  console.log("hello");
+
   //removes friend
   const clickHandler = () => {
     // if i don't do this it show 'cannot update state after the component is unmounted'
@@ -67,22 +60,17 @@ const UserFriendCard = ({
     }
 
     if (jwtData.sub !== userid) {
-      // console.log(myFriendsIndex);
-
-      console.log(friendBtn[index]);
       if (friendBtn[index] == false) {
         const get_index = myFriends.findIndex(
           (x) => x.username == value.username
         );
         if (get_index !== -1) {
-          console.log(get_index);
           myFriends.splice(get_index, 1);
           setMyFriends(myFriends);
         }
       } else {
         myFriends.push(value);
       }
-      console.log(myFriends);
     }
   };
 
@@ -90,94 +78,96 @@ const UserFriendCard = ({
 
   useEffect(() => {
     const check = myFriends.findIndex((x) => x.username === value.username);
-    console.log(check);
+
     if (check !== -1) {
       friendBtn[index] = true;
       setFriendBtn(friendBtn);
-      // setMyFriendsIndex(check);
     }
     setpp(!pp);
   }, []);
 
-  console.log(friendBtn[index]);
-
-  // console.log(path);
   return (
     <div className="UserFriendCard">
-      {" "}
-      <div className="profile-picture">{[...value.fname[0].toLowerCase()]}</div>
-      <div className="name-container">
-        <Link
-          to={{
-            pathname: `/user/${value.username}/posts`,
-            state: {
-              userid: value._id,
-              fname: value.fname,
-              lname: value.lname,
-              username: value.username,
-            },
-          }}
-        >
-          <div className="name">
-            <span>{value.fname} </span>
-            <span>{value.lname}</span>
+      {error && <div className="error">{error}</div>}
+      {!error && (
+        <>
+          <div className="profile-picture">
+            {[...value.fname[0].toLowerCase()]}
           </div>
-        </Link>
-        <div className="username">{value.username}</div>
-      </div>
-      {jwtData.sub !== value._id && (
-        <div
-          className="add-btn"
-          style={{
-            color:
-              path == "myfriends"
-                ? "red"
-                : jwtData.sub === userid
-                ? "red"
-                : friendBtn[index]
-                ? "red"
-                : "blue",
-          }}
-          onClick={() => {
-            friendBtn[index] = !friendBtn[index];
-            setFriendBtn(friendBtn);
-            setpp(!pp);
-
-            clickHandler();
-          }}
-        >
-          {(jwtData.sub == userid || path === "myfriends") && (
-            <div className="add-btn fas fa-user-minus"></div>
-          )}
-          {jwtData.sub !== userid && path !== "myfriends" && (
+          <div className="name-container">
+            <Link
+              to={{
+                pathname: `/user/${value.username}/posts`,
+                state: {
+                  userid: value._id,
+                  fname: value.fname,
+                  lname: value.lname,
+                  username: value.username,
+                },
+              }}
+            >
+              <div className="name">
+                <span>{value.fname} </span>
+                <span>{value.lname}</span>
+              </div>
+            </Link>
+            <div className="username">{value.username}</div>
+          </div>
+          {jwtData.sub !== value._id && (
             <div
-              // style={{ color: "blue" }}
-              className={
-                friendBtn[index]
-                  ? "add-btn fas fa-user-minus"
-                  : "add-btn fas fa-user-plus"
-              }
-            ></div>
+              className="add-btn"
+              style={{
+                color:
+                  path == "myfriends"
+                    ? "red"
+                    : jwtData.sub === userid
+                    ? "red"
+                    : friendBtn[index]
+                    ? "red"
+                    : "blue",
+              }}
+              onClick={() => {
+                friendBtn[index] = !friendBtn[index];
+                setFriendBtn(friendBtn);
+                setpp(!pp);
+
+                clickHandler();
+              }}
+            >
+              {(jwtData.sub == userid || path === "myfriends") && (
+                <div className="add-btn fas fa-user-minus"></div>
+              )}
+              {jwtData.sub !== userid && path !== "myfriends" && (
+                <div
+                  // style={{ color: "blue" }}
+                  className={
+                    friendBtn[index]
+                      ? "add-btn fas fa-user-minus"
+                      : "add-btn fas fa-user-plus"
+                  }
+                ></div>
+              )}
+            </div>
           )}
-        </div>
-      )}
-      {/* value._id woh idividual friend ka id hain and userid jiska profile visit kar rahe hain uska id hain */}
-      {jwtData.sub !== value._id && (
-        <div className="chat-link-container">
-          <Link
-            to={{
-              pathname: "/chat",
-              state: {
-                userid: value._id,
-                fname: value.fname,
-                lname: value.lname,
-                username: value.username,
-              },
-            }}
-          >
-            <div className="chat-btn fab fa-facebook-messenger"></div>
-          </Link>
-        </div>
+          {/* value._id woh idividual friend ka id hain and userid jiska profile visit kar rahe hain uska id hain */}
+          {jwtData.sub !== value._id && (
+            <div className="chat-link-container">
+              <Link
+                to={{
+                  pathname: "/chat",
+                  state: {
+                    userid: value._id,
+                    fname: value.fname,
+                    lname: value.lname,
+                    username: value.username,
+                  },
+                }}
+              >
+                <div className="chat-btn fab fa-facebook-messenger"></div>
+              </Link>
+            </div>
+          )}
+        </>
       )}
     </div>
   );

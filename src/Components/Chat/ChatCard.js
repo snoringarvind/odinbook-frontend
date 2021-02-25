@@ -1,25 +1,9 @@
-import React, { useState, useEffect, useContext, useRef } from "react";
+import React, { useState, useContext, useRef } from "react";
 import { OdinBookContext } from "../Context";
 import ChatMap from "./ChatMap";
 import uniqid from "uniqid";
-import axios from "axios";
 
-const ChatCard = ({
-  fname,
-  lname,
-  userid,
-  username,
-  // myMsg,
-  // setMyMsg,
-  // response,
-  // setResponse,
-  msgArr,
-  setMsgArr,
-  // responseLoading,
-  // mymsgloading,
-}) => {
-  console.log("chatcard");
-
+const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
   const valueRef = useRef();
 
   const [error, setError] = useState("");
@@ -30,7 +14,6 @@ const ChatCard = ({
 
   const [myChatList, setMyChatList] = myChatListValue;
 
-  console.log(msgArr);
   const submitHandler = () => {
     // e.preventDefault();
 
@@ -96,11 +79,7 @@ const ChatCard = ({
       }
     };
 
-    console.log("msg=", msg);
-    const cb_response = (response) => {
-      console.log(userid);
-      console.log(response);
-    };
+    const cb_response = (response) => {};
 
     axios_request({
       route: route,
@@ -118,7 +97,6 @@ const ChatCard = ({
     const route = `/mychat/${jwtData.sub}/${userid}`;
     const method = "PUT";
 
-    console.log("hello");
     const cb_error = (err) => {
       if (err.response) {
         setError(err.response.data);
@@ -147,7 +125,6 @@ const ChatCard = ({
     const route = `/mychat/${userid}/${jwtData.sub}`;
     const method = "PUT";
 
-    console.log("hello");
     const cb_error = (err) => {
       if (err.response) {
         setError(err.response.data);
@@ -165,15 +142,12 @@ const ChatCard = ({
       axios_error: cb_error,
       axios_response: cb_response,
     });
-
-    console.log(userid);
   };
 
   const save_isread_false = () => {
     const route = `/isreadfalse/${userid}`;
     const method = "PUT";
 
-    console.log("hello");
     const cb_error = (err) => {
       if (err.response) {
         setError(err.response.data);
@@ -192,7 +166,6 @@ const ChatCard = ({
       axios_error: cb_error,
     });
   };
-  console.log(valueRef);
   return (
     <div className="ChatCard">
       {error && <div className="error">{error}</div>}

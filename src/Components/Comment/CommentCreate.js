@@ -5,9 +5,7 @@ const CommentCreate = ({
   postid,
   setComments,
   postIndex,
-  // setNewCommentLoading,
   comments,
-
   pp,
   setpp,
 }) => {

@@ -19,14 +19,16 @@ const UserAbout = () => {
 
   const [getLoading, setGetLoading] = useState(true);
 
-  const [about, setAbout] = useState("");
   const [error, setError] = useState("");
 
   const location = useLocation();
-  const fname = location.state.fname;
-  const lname = location.state.lname;
-  const username = location.state.username;
-  const userid = location.state.userid;
+  let fname, lname, username, userid;
+  if (location.state) {
+    fname = location.state.fname;
+    lname = location.state.lname;
+    username = location.state.username;
+    userid = location.state.userid;
+  }
 
   const profile_route = `/profile/${userid}`;
   const profile_route_method = "GET";
@@ -38,7 +40,6 @@ const UserAbout = () => {
       if (userid === jwtData.sub) {
         setMyAbout(response.data);
       }
-      console.log(response.data);
       setResult(response.data);
 
       setGetLoading(false);
@@ -62,7 +63,6 @@ const UserAbout = () => {
   };
 
   useEffect(() => {
-    console.log(jwtData.sub, userid);
     if (jwtData.sub !== userid) {
       make_server_request();
     } else {
@@ -83,7 +83,6 @@ const UserAbout = () => {
     delete result.__v;
 
     g = Object.keys(result);
-    console.log(g);
   }
 
   const [tooltip, setTooltip] = useState(null);
@@ -101,12 +100,8 @@ const UserAbout = () => {
     }
   }, [result]);
 
-  // const [ee, setee] = useState();
-  console.log(ee);
-
   useEffect(() => {
     window.addEventListener("keydown", (e) => {
-      // console.log(e.key, "jdfjdfjdfnjdfn");
       if (e.key == "Escape") {
         setClickIndex(null);
       }

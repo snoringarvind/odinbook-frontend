@@ -9,8 +9,6 @@ import {
 import "./Navigation.css";
 
 const Navigation = ({ to, label }) => {
-  console.log(to);
-  console.log(label);
   let match = useRouteMatch({ path: to });
 
   if (match != null) {
@@ -20,12 +18,6 @@ const Navigation = ({ to, label }) => {
   }
 
   const location = useLocation();
-  console.log(location);
-
-  const params = useParams();
-  // console.log(params);
-  const history = useHistory();
-  // console.log(history);
 
   const arr = location.pathname.split("/");
 

@@ -26,9 +26,7 @@ const UserLikesCard = ({
       }
     };
 
-    const cb_response = (response) => {
-      // console.log(response);
-    };
+    const cb_response = (response) => {};
 
     axios_request({
       route: route,
@@ -38,26 +36,22 @@ const UserLikesCard = ({
       axios_response: cb_response,
     });
 
-    console.log(friendBtn[index]);
     if (friendBtn[index] == false) {
       const get_index = myFriends.findIndex(
         (x) => x.username == value.username
       );
       if (get_index !== -1) {
-        console.log(get_index);
         myFriends.splice(get_index, 1);
         setMyFriends(myFriends);
       }
     } else {
       myFriends.push(value);
     }
-    console.log(myFriends);
   };
 
-  console.log(value.username);
   useEffect(() => {
     const check = myFriends.findIndex((x) => x.username === value.username);
-    console.log(check);
+
     if (check !== -1) {
       friendBtn[index] = true;
       setFriendBtn(friendBtn);

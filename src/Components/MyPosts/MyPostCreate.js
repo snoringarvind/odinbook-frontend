@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import MyPostForm from "./MyPostForm";
 import "./MyPostCreate.css";
 import { useLocation } from "react-router-dom";
@@ -11,8 +11,6 @@ const MypostCreate = ({ user_post_response, createClick, setCreateClick }) => {
 
   const location = useLocation();
   const fname = location.state.fname;
-  const lname = location.state.lname;
-  const username = location.state.username;
   return (
     <div className="MyPostCreate">
       <>

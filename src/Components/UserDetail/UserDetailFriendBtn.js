@@ -30,8 +30,6 @@ const UserDetailFriendBtn = () => {
     username = location.state.username;
   }
 
-  console.log(username);
-
   //we will fetch the logged in users friends list incase if the myfriends was not loaded
   const get_myfriends = () => {
     const route = `/friend/${jwtData.sub}`;
@@ -52,7 +50,6 @@ const UserDetailFriendBtn = () => {
   };
 
   useEffect(() => {
-    console.log("didmyfriendsmount=", didMyFriendsMount);
     if (didMyFriendsMount) {
       get_myfriends();
       setDidMyFriendsMount(false);
@@ -62,13 +59,9 @@ const UserDetailFriendBtn = () => {
   }, []);
 
   useEffect(() => {
-    console.log(myFriends);
     const check = myFriends.findIndex((x) => {
-      console.log(x.username, username);
       return x.username === username;
     });
-    console.log(check);
-    // console.log(friendBtn);
     if (check !== -1) {
       setFriendBtn(true);
     } else {
@@ -76,8 +69,6 @@ const UserDetailFriendBtn = () => {
     }
     setpp(!pp);
   }, [myFriends]);
-
-  console.log(friendBtn);
 
   const clickHandler = () => {
     const route = `/friend/${userid}`;
@@ -91,9 +82,7 @@ const UserDetailFriendBtn = () => {
       }
     };
 
-    const cb_response = (response) => {
-      // console.log(response);
-    };
+    const cb_response = (response) => {};
 
     axios_request({
       route: route,
@@ -103,13 +92,10 @@ const UserDetailFriendBtn = () => {
       axios_response: cb_response,
     });
 
-    console.log(friendBtn);
     if (friendBtn == true) {
       const get_index = myFriends.findIndex((x) => x.username == username);
 
-      console.log(get_index);
       if (get_index !== -1) {
-        console.log(get_index);
         myFriends.splice(get_index, 1);
         setMyFriends(myFriends);
       }
@@ -136,9 +122,8 @@ const UserDetailFriendBtn = () => {
           }
           onClick={(e) => {
             e.preventDefault();
-            console.log(friendBtn);
             setFriendBtn(!friendBtn);
-            console.log(friendBtn);
+
             setpp(!pp);
             clickHandler();
           }}

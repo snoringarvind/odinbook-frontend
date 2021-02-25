@@ -23,13 +23,6 @@ const UserLikes = ({ postid, setUsersLikedIndex, userid }) => {
 
   const [friendBtn, setFriendBtn] = useState([]);
 
-  const location = useParams();
-  // const userid = location.state;
-  // console.log(userid);
-  console.log(location);
-  const params = useParams();
-  console.log(params);
-
   const get_users_liked = () => {
     const route = `/post/${postid}/like`;
     const method = "GET";
@@ -43,7 +36,7 @@ const UserLikes = ({ postid, setUsersLikedIndex, userid }) => {
 
     const cb_response = (response) => {
       setLikeList(response.data.like);
-      console.log(myFriends);
+
       const h = Array(response.data.like.length).fill(false);
       setFriendBtn(h);
     };
@@ -85,7 +78,6 @@ const UserLikes = ({ postid, setUsersLikedIndex, userid }) => {
   useEffect(() => {
     get_users_liked();
 
-    console.log("didmyfriendsmount=", didMyFriendsMount);
     if (didMyFriendsMount) {
       get_myfriends();
       setDidMyFriendsMount(false);

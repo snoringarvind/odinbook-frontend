@@ -63,9 +63,7 @@ const UserPostCard = ({
         setCardError(err.message);
       }
     };
-    const cb_response = (response) => {
-      console.log(response);
-    };
+    const cb_response = (response) => {};
 
     axios_request({
       route: like_post_route,
@@ -89,7 +87,6 @@ const UserPostCard = ({
       setCommentsLoading(false);
     };
     const cb_response = (response) => {
-      console.log(response.data);
       setComments(response.data);
       setCommentsLoading(false);
     };
@@ -107,36 +104,22 @@ const UserPostCard = ({
 
   const [pp, setpp] = useState(false);
 
-  console.log(comments);
   useEffect(() => {
-    console.log("hello");
     if (likeLength.length < postsLength) {
       likeClick.push(g);
       setLikeClick(likeClick);
       likeLength.push(value.like.length);
       setLikeLength(likeLength);
-      // console.log(likeLength[index]);
       setpp(!pp);
     }
-    console.log(
-      "likeClick.length=",
-      likeClick.length,
-      "likeLength=",
-      likeLength.length,
-      "postslength=",
-      postsLength
-    );
   }, []);
-  // console.log(comments);
 
+  //this useffect will render the page if the comment icon is clicked or there is change in comments.
   useEffect(() => {
     const element = document.querySelector(`#post-${index}`);
 
-    console.log(element);
     if (element) {
-      console.log(element);
       const height = element.scrollHeight;
-      console.log(height);
       element.scrollTo(0, height);
     }
   }, [pp, commentIconClicked, commentsLoading]);
@@ -175,16 +158,12 @@ const UserPostCard = ({
           <div
             className="option-btn"
             onClick={(e) => {
-              // console.log(e.target);
-
               e.preventDefault();
-              // console.log(indexOfCardClicked, index);
               if (indexOfCardClicked == index) {
                 setindexOfCardClicked(null);
               } else {
                 setindexOfCardClicked(index);
               }
-              // console.log(indexOfCardClicked, index);
             }}
           >
             <div

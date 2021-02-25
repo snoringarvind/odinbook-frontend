@@ -1,14 +1,6 @@
 import React, { useContext } from "react";
 import UserNav from "./UserNav";
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  useParams,
-  useLocation,
-  useHistory,
-  Link,
-} from "react-router-dom";
+import { Route, Switch, useParams, useLocation, Link } from "react-router-dom";
 import UserAbout from "./UserAbout";
 import UserPost from "./UserPost";
 import UserFriend from "./UserFriend";
@@ -19,10 +11,6 @@ import UserDetailFriendBtn from "./UserDetailFriendBtn";
 const UserDetail = () => {
   const location = useLocation();
   let params = useParams();
-  console.log(params);
-  console.log(location.state);
-  const history = useHistory();
-  console.log(history);
 
   const { jwtData } = useContext(OdinBookContext);
 

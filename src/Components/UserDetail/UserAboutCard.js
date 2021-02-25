@@ -1,5 +1,4 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useLocation } from "react-router-dom";
 import { OdinBookContext } from "../Context";
 
 const UseraAboutCard = ({
@@ -14,9 +13,7 @@ const UseraAboutCard = ({
   jwtData,
   userid,
 }) => {
-  const { myAboutValue, didMyAboutMountValue, axios_request } = useContext(
-    OdinBookContext
-  );
+  const { myAboutValue, axios_request } = useContext(OdinBookContext);
   const [myAbout, setMyAbout] = myAboutValue;
 
   const [error, setError] = useState("");
@@ -26,15 +23,7 @@ const UseraAboutCard = ({
 
   const [state, setState] = useState({ [objkey]: ee[objkey] });
 
-  const arr = { [objkey]: useRef() };
-  console.log(arr);
-
-  console.log(objkey);
-
-  // console.log(state);
   const str = {
-    // fname: "First Name",
-    // lname: "Last Name",
     bio: "Bio",
     nickName: "Nick-name",
     school: "School",
@@ -49,19 +38,15 @@ const UseraAboutCard = ({
     phone: "Phone",
   };
   const changeHandler = (e) => {
-    console.log(e);
     e.preventDefault();
     const element = document.getElementById(objkey);
-    console.log(element);
 
     const { name, value } = e.target;
 
     if (element.tagName == "INPUT") {
       const element_id = element.id;
       const arr = [...value];
-      console.log(arr.length);
       if (element_id !== "food" && element_id !== "book") {
-        console.log(element_id);
         if (arr.length >= 30) {
           setTooltip(true);
           return;
@@ -82,7 +67,6 @@ const UseraAboutCard = ({
   };
 
   const submitHandler = (e) => {
-    console.log(e);
     e.preventDefault();
     const route = "/myprofile";
     const method = "PUT";
@@ -95,18 +79,12 @@ const UseraAboutCard = ({
       }
     };
 
-    const cb_response = (response) => {
-      console.log(response);
-    };
+    const cb_response = (response) => {};
 
-    console.log(state);
-    if (state.fname == "" || state.lname == "") {
-      // setTooltip(true);
-      console.log(state);
+    if (state.fname === "" || state.lname === "") {
       return;
     }
 
-    console.log(state, "aksamskamskasmk");
     axios_request({
       route: route,
       data: state,
@@ -120,7 +98,6 @@ const UseraAboutCard = ({
     if (clickIndex == index) {
       const element = document.getElementById(objkey);
       element.focus();
-      console.log(element);
       element.style.border = "1px solid blue";
       element.style.boxShadow = "0.3px 0.3px 5px blue";
       element.style.outline = "none";
@@ -128,8 +105,6 @@ const UseraAboutCard = ({
       savediv.style.color = "blue";
     }
   }, []);
-
-  console.log(empty_name);
 
   return (
     <div className="UserAboutCard">
@@ -233,7 +208,6 @@ const UseraAboutCard = ({
                 <div
                   className="edit-icon fas fa-edit"
                   onClick={(e) => {
-                    console.log(e);
                     e.preventDefault();
                     e.stopPropagation();
                     setClickIndex(index);

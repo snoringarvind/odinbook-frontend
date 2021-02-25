@@ -6,7 +6,6 @@ const UserNav = ({ to, fname, lname, userid, username, label }) => {
   let match = useRouteMatch({ path: to });
   if (match) {
     match = match.isExact;
-    console.log(match);
   }
 
   return (

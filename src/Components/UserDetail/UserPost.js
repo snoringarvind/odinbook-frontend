@@ -3,7 +3,7 @@ import { useLocation, useParams, useHistory } from "react-router-dom";
 import { OdinBookContext } from "../Context";
 import uniqid from "uniqid";
 import MypostCreate from "../MyPosts/MyPostCreate";
-import moment from "moment";
+
 import "./UserPost.css";
 import MyPostUpdate from "../MyPosts/MyPostUpdate";
 import UserPostCard from "./UserPostCard";
@@ -11,7 +11,6 @@ import MyPostDelete from "../MyPosts/MyPostDelete";
 import WelcomeMsg from "../WelcomeMsg/WelcomeMsg";
 
 const UserPost = ({ path }) => {
-  // console.log(path);
   const {
     jwtData,
     axios_request,
@@ -26,8 +25,6 @@ const UserPost = ({ path }) => {
   const [didMyNewsFeedMount, setDidMyNewsFeedMount] = didMyNewsFeedMountValue;
   const [didMyPostsMount, setDidMyPostsMount] = didMyPostsMountValue;
 
-  const [myFriends, setMyFriends] = myFriendsValue;
-
   const [error, setError] = useState("");
   const [getLoading, setGetLoading] = useState(true);
 
@@ -41,8 +38,6 @@ const UserPost = ({ path }) => {
   const [deleteClick, setDeleteClick] = useState(false);
   const [likeLength, setLikeLength] = useState([]);
 
-  // const [commentLength, setCommentLength] = useState([]);
-
   //this is so we don't have to make request to the server to prefill the update form.
   const [updateData, setUpdateData] = useState("");
 
@@ -54,9 +49,6 @@ const UserPost = ({ path }) => {
 
   const location = useLocation();
 
-  console.log(location);
-  const history = useHistory();
-  console.log(history);
   //putting in an if-block since in news feed location.state will be undefined
   let userid;
   let fname;
@@ -66,9 +58,6 @@ const UserPost = ({ path }) => {
     fname = location.state.fname;
     lname = location.state.lname;
   }
-
-  const params = useParams();
-  // console.log("params", params);
 
   const get_posts = () => {
     let post_list_route;
@@ -110,15 +99,10 @@ const UserPost = ({ path }) => {
     });
   };
 
-  // console.log(path);
-  console.log(updateIndex);
-
   useEffect(() => {
-    // console.log(userid);
     if (path == "userpost") {
       //herer if the url is news-feed , the userid will be undefined.
       if (userid !== jwtData.sub) {
-        // console.log(userid, jwtData.sub);
         get_posts();
         setIsOwner(false);
       } else {
@@ -137,12 +121,10 @@ const UserPost = ({ path }) => {
         get_posts();
         setIsOwner(false);
         setDidMyNewsFeedMount(false);
-        // console.log(didMyNewsFeedMount);
       } else {
         setResult(myNewsfeed);
         setGetLoading(false);
         setIsOwner(false);
-        // console.log("hello");
       }
     }
   }, [location.pathname]);
@@ -155,32 +137,21 @@ const UserPost = ({ path }) => {
   // }, [myFriends]);
 
   const post_create_response = (response) => {
-    // setNewPost([...result, response.data.save_post]);
-    // console.log(response.data.save_post);
-    // console.log(result);
-    console.log("response", response);
     setResult([response.data].concat(result));
     setMyPosts([response.data].concat(myPosts));
-    console.log([response.data].concat(result));
-
-    // result.unshift(response.data);
   };
 
   const post_update_response = (response) => {
-    // console.log(response);
     result[updateIndex] = response.data;
     setResult(result);
     myPosts[updateIndex] = response.data;
     setMyPosts(myPosts);
   };
 
-  //uding updateindex for update and delete same
+  //using updateindex for update and delete same
   const post_delete_repsonse = (response) => {
-    console.log(response);
     //as soon as we get the response delete the post from the screen
 
-    console.log(result);
-    console.log(updateIndex);
     result.splice(updateIndex, 1);
     setResult(result);
 
@@ -193,18 +164,8 @@ const UserPost = ({ path }) => {
     setDeleteClick(false);
   };
 
-  // console.log(location.pathname);
-
   const [likeClick, setLikeClick] = useState([]);
   const [UserLikedIndex, setUsersLikedIndex] = useState(null);
-
-  // console.log(myPosts);
-  // console.log(path);
-  // console.log(location.pathname);
-
-  console.log(location);
-  // console.log(location.state.from);
-  console.log(path);
 
   useEffect(() => {
     if (location.state) {
@@ -228,7 +189,6 @@ const UserPost = ({ path }) => {
       {error && <div className="error">{error}</div>}
       {!error && (
         <>
-          {" "}
           {/* doing path=='newsfeed' herer bcoz for a second it shows loading even if we are loading the data from state */}
           {/* maybe we will show loading even for newsfeed for a second. */}
           {/* {getLoading && path !== "newsfeed" && "loading"} */}
@@ -262,8 +222,6 @@ const UserPost = ({ path }) => {
                     updateClick={updateClick}
                     setUpdateClick={setUpdateClick}
                     updateData={updateData}
-                    // createClick={createClick}
-                    // setCreateClick={setCreateClick}
                     user_post_response={post_update_response}
                   />
                 </div>

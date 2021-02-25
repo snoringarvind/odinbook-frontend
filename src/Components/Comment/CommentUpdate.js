@@ -12,7 +12,6 @@ const CommentUpdate = ({
 }) => {
   const route = `/post/${postid}/comment/${commentid}`;
   const method = "PUT";
-  console.log(updateValue);
 
   return (
     <div className="CommentUpdate">
