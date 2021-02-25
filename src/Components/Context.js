@@ -135,14 +135,13 @@ const OdinBookProvider = ({ children }) => {
 
   useEffect(() => {
     console.log(isAuth);
-    if (!isAuth) {
-      const jwt = JSON.parse(localStorage.getItem("jwtData"));
-      if (jwt) {
-        setJwtData(jwt);
-      } else {
-        setIsAuth(false);
-        setLoading(false);
-      }
+
+    const jwt = JSON.parse(localStorage.getItem("jwtData"));
+    if (!isAuth && jwt) {
+      setJwtData(jwt);
+    } else {
+      setIsAuth(false);
+      setLoading(false);
     }
   }, []);
 
