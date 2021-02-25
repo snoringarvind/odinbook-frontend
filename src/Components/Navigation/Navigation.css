@@ -1,0 +1,124 @@
+.Navigation {
+  display: flex;
+  /* border: 1px solid; */
+
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+  border-radius: 0 0 4px 4px;
+  height: 7vh;
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  box-shadow: 0.3px 0.3px 5px lightgray;
+}
+
+.Navigation .SearchBar {
+  /* border: 1px solid blue; */
+  width: 68%;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.Navigation .SearchBar form {
+  width: 100%;
+}
+.Navigation .SearchBar input {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+  border: 1px solid darkgray;
+  padding: 4px;
+  padding-left: 10px;
+  font-size: 1rem;
+}
+
+.Navigation .nav-links.active a {
+  color: blue;
+  /* background-color: lightgray; */
+}
+.Navigation .drop-btn,
+.Navigation .nav-links a {
+  min-width: 40px;
+  /* max-width: 7vh; */
+  display: block;
+  height: 100%;
+  /* border: 1px solid green; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  color: darkgray;
+  cursor: pointer;
+}
+
+.Navigation .left-nav {
+  display: flex;
+  justify-content: space-evenly;
+  width: 32%;
+  /* border: 1px solid rgb(220, 246, 255); */
+}
+
+.Home {
+  position: relative;
+}
+.Home .Hamburger {
+  position: fixed;
+  top: 7vh;
+  right: 20px;
+  box-shadow: 0.3px 0.3px 5px darkgray, -0.3px -0.3px 5px darkgray;
+  /* border: 1px solid yellow; */
+  width: fit-content;
+  background-color: white;
+  border-radius: 4px;
+  padding: 10px;
+  z-index: 1;
+}
+
+.Hamburger .box-1 a {
+  display: flex;
+  /* border: 1px solid; */
+  align-items: center;
+}
+
+.Hamburger .nav-link-container {
+  /* border: 1px solid red; */
+  line-height: 100%;
+}
+
+.Hamburger .nav-link-container .nav-link-desc {
+  font-size: 0.8rem;
+  color: darkgray;
+}
+.Hamburger .profile-picture {
+  width: 2rem;
+  height: 2rem;
+  /* border: 1px solid; */
+  margin-right: 5px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 228, 233);
+}
+
+.Hamburger .box a {
+  /* border: 1px solid; */
+  padding: 5px;
+  margin-bottom: 6px;
+  border-radius: 4px;
+  color: rgb(32, 32, 32);
+  text-decoration: none;
+}
+
+.Hamburger .box a:hover {
+  background-color: rgb(224, 224, 224);
+}
+
+.Hamburger .box-2 a {
+  display: block;
+}

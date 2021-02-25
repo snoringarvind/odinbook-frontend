@@ -1,0 +1,42 @@
+.MyPostCreate .show-form-container {
+  /* border: 1px solid; */
+  width: 100%;
+  height: 15vh;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0px 10px;
+  border-radius: 4px;
+  box-shadow: 0.3px 0.3px 13px rgb(238, 238, 238),
+    -0.3px -0.3px 13px rgb(238, 238, 238);
+  background-color: white;
+}
+
+.MyPostCreate .profile-picture {
+  border-radius: 50%;
+  height: 50px;
+  min-width: 50px;
+  /* border: 1px solid; */
+  margin-right: 10px;
+  background-color: rgb(255, 230, 233);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 450;
+}
+
+.MyPostCreate .show-form-btn {
+  /* border: 1px solid; */
+  width: 100%;
+  height: 50px;
+  border-radius: 15px;
+  background-color: rgb(238, 238, 238);
+  padding: 15px;
+  color: rgb(88, 88, 88);
+  cursor: pointer;
+}
+
+.MyPostCreate .show-form-btn:hover {
+  background-color: lightgray;
+}

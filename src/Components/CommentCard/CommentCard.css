@@ -1,0 +1,98 @@
+.CommentCard {
+  /* border: 1px solid; */
+  display: flex;
+  /* padding: 5px; */
+  margin: 5px 0px;
+  /* position: relative; */
+  /* align-items: center; */
+}
+
+.CommentCard .profile-picture {
+  height: 2.3rem;
+  min-width: 2.3rem;
+  /* border: 1px solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: rgb(255, 230, 233);
+}
+
+.CommentCard .comment-container {
+  border-radius: 8px;
+  padding: 8px;
+  /* border: 1px solid red; */
+  background-color: rgb(243, 243, 243);
+  /* width: fit-content; */
+  /* height: auto; */
+  /* width: fit-content; */
+}
+
+.CommentCard .name a {
+  font-weight: 380;
+  text-decoration: none;
+  font-size: 1rem;
+  display: block;
+  /* color: black; */
+}
+
+.CommentCard .name a:hover {
+  text-decoration: underline;
+}
+
+.CommentCard .comment {
+  font-size: 1rem;
+  color: rgb(46, 46, 46);
+}
+
+.CommentCard .name-container {
+  display: flex;
+  border: 1px solid;
+}
+
+.CommentCard .option-icon {
+  /* border: 1px solid; */
+  margin: 0 10px;
+  /* display: flex; */
+  /* align-items: center; */
+  /* background-color: rgb(243, 243, 243); */
+  height: 30px;
+  padding: 5px 3px;
+  border-radius: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+.CommentCard .comment-menu {
+  position: absolute;
+  /* border: 1px solid; */
+  left: 100%;
+  top: 100%;
+
+  box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray;
+  background-color: white;
+  border-radius: 4px;
+}
+
+.CommentCard .comment-btn {
+  padding: 5px 10px;
+}
+.CommentCard .comment-btn:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.CommentCard .option-icon {
+  display: flex;
+  align-items: center;
+
+  /* font-size: 1rem; */
+}
+
+.CommentCard .option-icon .btn {
+  cursor: pointer;
+  padding: 7px;
+  color: rgb(92, 92, 92);
+  border-radius: 4px;
+}

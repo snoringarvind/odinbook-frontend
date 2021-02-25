@@ -1,0 +1,228 @@
+.UserPost .UserPostCard {
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+  /* border: 1px solid red; */
+  margin: 10px 20px;
+  background-color: white;
+  border-radius: 4px;
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+}
+
+.UserPost .UserPostCard .head .profile-picture {
+  border-radius: 50%;
+  min-height: 50px;
+  max-height: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  /* border: 1px solid; */
+  margin-right: 10px;
+  background-color: rgb(255, 230, 233);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: 450;
+}
+
+.UserPost .UserPostCard .head .name-container {
+  margin-right: 30px;
+  /* border: 1px solid; */
+  flex-basis: 100%;
+  line-height: 110%;
+}
+.UserPost .UserPostCard .head .name-container .name {
+  /* border: 1px solid red; */
+  font-size: 1.3rem;
+  width: fit-content;
+  font-weight: 430;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.UserPost .UserPostCard .head .name-container .name a {
+  display: block;
+  text-decoration: none;
+}
+
+.UserPost .UserPostCard .head .username {
+  color: darkgray;
+}
+
+.UserPost .UserPostCard .head {
+  display: flex;
+  border: 1px solid;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.UserPost .UserPostCard .head .option-btn {
+  /* border: 1px solid; */
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  color: rgb(126, 126, 126);
+  align-items: center;
+  position: relative;
+}
+
+.UserPost .UserPostCard .head .hamburger-menu {
+  position: absolute;
+  top: 100%;
+  /* border: 1px solid; */
+  right: 100%;
+  background-color: white;
+  color: black;
+  font-size: 0.9rem;
+  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-weight: 500;
+  min-width: 200px;
+  border-radius: 4px;
+  box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray;
+}
+
+.UserPost .UserPostCard .head .menu-btn {
+  /* border: 1px solid red; */
+  /* padding: 10px; */
+  /* height: 5vh; */
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  /* width: fit-content; */
+}
+.UserPost .UserPostCard .head .menu-btn .icon {
+  /* border: 1px solid; */
+  min-width: 40px;
+  font-size: 1.4rem;
+  /* text-align: center; */
+}
+
+.UserPost .UserPostCard .head .menu-btn .label {
+  /* border: 1px solid red; */
+  /* display: block; */
+  /* width: fit-content; */
+  flex-basis: 100%;
+}
+
+.UserPost .UserPostCard .head .option-btn .btn {
+  /* border: 1px solid; */
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.UserPost .UserPostCard .head .option-btn .btn:hover {
+  background-color: darkgray;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.UserPost .UserPostCard .head .menu-btn:hover {
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.UserPost .post-title {
+  /* border: 1px solid green; */
+  font-weight: bold;
+  font-family: cursive;
+  font-size: 1.5rem;
+}
+
+.UserPost .post-content {
+  margin-top: 1px;
+  /* border: 1px solid; */
+  /* color: rgb(61, 61, 61); */
+  color: black;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.UserPost .post-content::first-line {
+  text-indent: 2%;
+}
+
+.UserPost .post-content-container {
+  margin-top: 10px;
+  /* border: 1px solid red; */
+  padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+}
+
+.UserPost .card-footer {
+  display: flex;
+  justify-content: space-around;
+  /* border: 1px solid red; */
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+  font-size: 1.3rem;
+  /* margin: 10px 0; */
+  height: 7vh;
+  align-items: center;
+  /* margin-bottom: 10px; */
+}
+
+.UserPost .card-footer .comment-icon:hover,
+.UserPost .like-icon:hover,
+.UserPost .share-icon:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+  /* color: blue; */
+}
+
+.UserPost .UserPostCard .comment-list {
+  /* border: 1px solid red; */
+  max-height: 60vh;
+  overflow: auto;
+  border-radius: 4px;
+  /* margin: 15px 0; */
+  padding: 10px;
+  /* box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray; */
+}
+
+.UserPost .UserPostCard .no-like {
+  padding: 10px;
+  /* border: 1px solid; */
+  width: fit-content;
+  /* color: blue; */
+  color: rgb(56, 56, 56);
+}
+
+.UserPost .UserPostCard .no-like:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.UserPost .no-comment {
+  /* border: 1px solid; */
+  /* margin: 5px 0; */
+  /* padding: 10px 0; */
+  /* margin-bottom: 10px; */
+  color: rgb(56, 56, 56);
+}
+
+.UserPost .empty-posts {
+  /* border: 1px solid; */
+  margin: 10px 20px;
+  /* background-color: white; */
+  height: 20vh;
+  display: flex;
+  justify-content: center;
+  border-radius: 4px;
+  font-size: 1.3rem;
+  align-items: center;
+  /* box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray; */
+}
+
+.UserPost:not(.UserPost.myaccount) {
+  /* border: 1px solid red; */
+  margin-top: 7vh;
+  min-height: 93vh;
+  overflow-y: auto;
+}
+
+.UserPost.myaccount {
+  margin-top: 0;
+  /* border: 1px solid green; */
+  overflow-y: hidden;
+  /* min-height: 100vh; */
+  /* height: 100vh; */
+}

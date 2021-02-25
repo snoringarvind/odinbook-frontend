@@ -1,0 +1,53 @@
+.UserDetail .user-banner {
+  height: 30vh;
+  width: 100%;
+  /* border: 1px solid; */
+  /* border-radius: 0 0 15px 15px; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(247, 185, 255);
+  font-size: 2.5rem;
+  font-weight: 450;
+  text-shadow: 0.3px 0.3px 5px black;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  position: relative;
+}
+
+.UserDetail .user-banner-container {
+  /* position: relative; */
+}
+
+.UserDetail .user-banner-container .name-container {
+  text-align: center;
+  background-color: white;
+  padding: 20px;
+  font-size: large;
+  font-weight: 450;
+  border-bottom: 1px solid darkgray;
+}
+
+.UserDetail .user-banner-container .user-banner .chat-link-container a,
+.UserDetail .user-banner-container .user-banner .UserDetailFriendBtn .add-btn {
+  margin: 20px;
+  font-size: 2rem;
+  cursor: pointer;
+  /* border: 1px solid; */
+  /* width: fit-content; */
+}
+
+.UserDetail .user-banner-container .user-banner .banner-btn {
+  /* border: 1px solid; */
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  /* width: fit-content; */
+  display: flex;
+  align-items: center;
+}
+
+.UserDetail {
+  margin-top: 7vh;
+  height: 93vh;
+  overflow-y: auto;
+}

@@ -1,0 +1,45 @@
+.CommentForm {
+  /* border: 1px solid; */
+  display: flex;
+  /* margin: 10px 0; */
+  padding: 5px;
+  /* width: 80vw; */
+  align-items: center;
+  height: 9vh;
+  border-top: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
+.CommentForm .profile-picture {
+  /* border: 1px solid; */
+  min-width: 2.3rem;
+  max-width: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-right: 10px;
+  background-color: rgb(255, 230, 233);
+}
+
+.CommentForm form {
+  /* border: 1px solid; */
+  display: block;
+  flex-basis: 100%;
+}
+.CommentForm form input {
+  border: none;
+  display: block;
+  background-color: rgb(243, 243, 243);
+  border-radius: 8px;
+  padding: 8px;
+  height: 2.3rem;
+  margin-right: 5px;
+  width: 100%;
+}
+
+.CommentForm form input:focus {
+  border: 1px solid darkgray;
+  outline: none;
+}

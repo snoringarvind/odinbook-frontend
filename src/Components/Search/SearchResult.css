@@ -1,0 +1,95 @@
+.SearchResult .SearchResultCard {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid lightgray;
+  /* border: 1px solid; */
+}
+
+.SearchResult .SearchResultCard:last-child {
+  border-bottom: none;
+}
+
+.SearchResult .people {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.SearchResult {
+  margin: 9vh 2vh 2vh 2vh;
+  height: 89vh;
+  overflow-y: auto;
+  background-color: white;
+  border-radius: 5px;
+  /* min-height: 83vh; */
+  /* border: 1px solid lightgray; */
+
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+  padding: 20px;
+}
+.SearchResult .profile-picture {
+  /* border: 1px solid; */
+  max-height: 3.3rem;
+  min-height: 3.3rem;
+  min-width: 3.3rem;
+  max-width: 3.3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: lightpink;
+  font-size: 1.5rem;
+
+  margin-right: 30px;
+}
+
+.SearchResult .name-container {
+  margin-right: 30px;
+  /* border: 1px solid green; */
+  flex-basis: 100%;
+  line-height: 110%;
+}
+.SearchResult .name-container .name {
+  /* border: 1px solid; */
+  font-size: 1.3rem;
+
+  font-weight: 430;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.SearchResult .name-container a {
+  /* border: 1px solid red; */
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+}
+
+.SearchResult .username {
+  color: rgb(70, 70, 70);
+}
+
+.SearchResult .add-btn,
+.SearchResult .chat-btn {
+  cursor: pointer;
+  /* border: 1px solid red; */
+  width: 2.3rem;
+  min-width: 2.3rem;
+  min-height: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(236, 236, 236);
+  margin: 0 8px;
+}
+
+.SearchResult .add-btn:hover,
+.SearchResult .chat-btn:hover {
+  transform: scale(1.01);
+  background-color: lightgray;
+}
+
+.SearchResult .chat-btn {
+  color: blue;
+}

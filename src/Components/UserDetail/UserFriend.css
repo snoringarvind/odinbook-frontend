@@ -1,0 +1,120 @@
+.UserFriend .UserFriendCard {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid darkgray;
+  /* background-color: white; */
+  /* border-bottom: 1px solid lightgray; */
+  /* border: 1px solid; */
+
+  /* margin: 10px 20px; */
+  /* border-radius: 4px; */
+  /* width: 60vw; */
+  /* margin: 3% 5%; */
+  /* border: 1px solid; */
+}
+
+.UserFriend .UserFriendCard:last-child {
+  border-bottom: none;
+}
+
+.UserFriend .people {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.UserFriend {
+  /* min-height: 85vh; */
+  margin: 9vh 2vh 2vh 2vh;
+  /* overflow-y: auto; */
+  /* min-height: 89vh; */
+  background-color: white;
+  border-radius: 5px;
+  /* min-height: 91vh; */
+  /* border: 1px solid blue; */
+  padding: 20px;
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+}
+.UserFriend .profile-picture {
+  /* border: 1px solid; */
+  max-height: 50px;
+  min-height: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: lightpink;
+  font-size: 1.5rem;
+
+  margin-right: 20px;
+}
+
+.UserFriend .name-container {
+  margin-right: 30px;
+  /* border: 1px solid; */
+  flex-basis: 100%;
+}
+
+.UserFriend .name-container a {
+  /* border: 1px solid; */
+  display: block;
+  width: fit-content;
+}
+.UserFriend .name-container .name {
+  /* border: 1px solid; */
+  font-size: 1.3rem;
+  font-weight: 430;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.UserFriend .username {
+  color: rgb(78, 78, 78);
+  font-size: 1rem;
+}
+
+.UserFriend .add-btn,
+.UserFriend .chat-btn {
+  cursor: pointer;
+  /* border: 1px solid red; */
+  width: 2.3rem;
+  min-width: 2.3rem;
+  min-height: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  margin: 0 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(236, 236, 236);
+}
+
+.UserFriend .add-btn:hover {
+  transform: scale(1.01);
+  background-color: lightgray;
+}
+
+.UserFriend:not(.UserFriend.myaccount) {
+  overflow-y: auto;
+  min-height: 89vh;
+}
+.UserFriend.myaccount {
+  /* border: 1px solid green; */
+  margin-top: 0;
+  /* overflow-y: hidden; */
+  height: fit-content;
+}
+
+.UserFriend .empty-friends {
+  margin: 10px 20px;
+  background-color: white;
+  /* height: 20vh; */
+  padding: 20px 0px 20px 10px;
+  /* display: flex; */
+  /* justify-content: center; */
+  border-radius: 4px;
+  font-size: 1.1rem;
+  /* align-items: center; */
+  /* box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray; */
+}

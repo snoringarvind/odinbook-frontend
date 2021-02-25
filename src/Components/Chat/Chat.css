@@ -1,0 +1,108 @@
+.Chat form {
+  /* border: 1px solid; */
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: 10px 20px;
+  border-radius: 4px;
+  background-color: white;
+  height: 9vh;
+  padding: 10px;
+  z-index: 1;
+}
+
+/* to hover send btn next to input */
+
+.Chat .form-group .send-btn button {
+  margin: 0 5px 0 10px;
+  padding: 5px 10px;
+  border-radius: 4px;
+  background-color: green;
+  border: none;
+  color: white;
+}
+
+.Chat .form-group .send-btn {
+  /* border: 1px solid; */
+  position: absolute;
+  right: 0;
+  /* top: 0; */
+  width: 15%;
+  display: flex;
+  justify-content: center;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.Chat .form-group input {
+  position: absolute;
+  /* left: 0; */
+  /* right: 0; */
+  /* top: 0; */
+  width: 83%;
+  padding: 5px 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 2px solid black;
+  border-radius: 4px;
+  outline: none;
+}
+
+.Chat .form-group input:focus {
+  border: 1px solid blue;
+  box-shadow: 0.01px 0.01px 4px blue;
+  /* outline: 1px solid blue; */
+  outline: none;
+}
+
+.Home .Hamburger {
+  z-index: 1;
+}
+
+/* for head flex */
+.Chat .head-top {
+  display: flex;
+  /* border: 1px solid; */
+  background-color: white;
+  height: 7vh;
+  align-items: center;
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 7vh;
+  /* z-index: 1; */
+}
+
+.Chat .profile-picture {
+  /* border: 1px solid; */
+  width: 6vh;
+  height: 6vh;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(255, 230, 232);
+  margin: 0px 10px;
+}
+
+.Chat .name {
+  font-size: 1rem;
+  font-weight: 450;
+  margin: 0 10px 0px 0;
+}
+.Chat {
+  /* border: 1px solid green; */
+  height: 86vh;
+  margin-top: 14vh;
+  position: relative;
+  overflow-y: auto;
+  width: 100%;
+  padding: 0;
+}

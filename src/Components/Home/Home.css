@@ -1,0 +1,30 @@
+.Home {
+  /* width: 80vw; */
+  /* min-height: 93vh; */
+  /* border: 1px solid black; */
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  /* margin-top: 7vh; */
+  /* background-image: linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%); */
+}
+
+.Home .odin-book {
+  /* border: 1px solid; */
+  min-height: 7vh;
+  max-height: 7vh;
+  display: flex;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: bolder;
+  font-family: cursive;
+  background-image: linear-gradient(
+    to top,
+    #0c3483 0%,
+    #a2b6df 100%,
+    #6b8cce 100%,
+    #a2b6df 100%
+  );
+  color: white;
+  padding: 10px 30px;
+}

@@ -1,0 +1,81 @@
+.Signup {
+  border: 1px solid;
+  min-height: 93vh;
+  position: relative;
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+
+.Signup form {
+  top: 10%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  /* border: 1px solid; */
+  padding: 30px;
+  border-radius: 4px;
+  background-color: rgb(200, 221, 228);
+
+  box-shadow: 0.3px 0.3px 15px white, -0.3px -0.3px 15px white,
+    0.3px 0.3px 15px white, -0.3px -0.3px 15px white;
+}
+
+.Signup .head {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.Signup form input {
+  font-size: 1rem;
+  padding: 4px 10px;
+  border: 1px solid black;
+  border-radius: 4px;
+}
+.Signup form input:focus {
+  box-shadow: 0.3px 0.3px 4px blue;
+  border: 1px solid blue;
+  outline: none;
+}
+
+.Signup .form-group {
+  margin: 10px 0;
+}
+
+.Signup .form-group label {
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: block;
+}
+
+.Signup .signup-btn button,
+.Signup .login-btn button {
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  font-weight: bold;
+  padding: 5px 20px;
+  border-radius: 3px;
+  /* margin: 0 10px; */
+  margin-right: 5px;
+}
+
+.Signup .login-btn button {
+  background-color: blue;
+}
+
+.Signup .signup-btn button {
+  background-color: green;
+}
+
+.Signup .login-btn button:hover {
+  transform: scale(1.01);
+  background-color: darkblue;
+}
+
+.Signup .signup-btn button:hover {
+  transform: scale(1.01);
+  background-color: darkgreen;
+}
+
+.Signup .buttons {
+  display: flex;
+}

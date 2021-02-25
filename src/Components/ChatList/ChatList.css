@@ -1,0 +1,106 @@
+.ChatList {
+  display: block;
+  height: 89vh;
+  overflow-y: auto;
+  /* border: 1px solid red; */
+  margin: 9vh 2vh 2vh 2vh;
+  border-radius: 5px;
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+  cursor: pointer;
+}
+
+.ChatList .ChatListCard a {
+  display: block;
+  text-decoration: none;
+  color: rgb(54, 54, 54);
+  /* border: 1px solid; */
+  /* border: 1px solid red; */
+  display: flex;
+  height: 8vh;
+  align-items: center;
+  align-items: center;
+  /* padding: 50px 0;  */
+}
+
+.ChatList .profile-picture {
+  height: 6.2vh;
+  width: 6.2vh;
+  min-width: 6.2vh;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid; */
+  margin: 0 10px;
+  background-color: rgb(205, 235, 247);
+}
+
+.ChatList .name {
+  border-bottom: 1px solid;
+  height: 7.8vh;
+  flex-basis: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.ChatList .read-container {
+  /* border: 1px solid red; */
+  margin-right: 10px;
+  height: 7.8vh;
+
+  border-bottom: 1px solid;
+}
+
+.ChatList .date-container {
+  display: flex;
+  /* border: 1px solid green; */
+  font-size: 0.75rem;
+  height: 3.5vh;
+  padding: 2px;
+  align-items: center;
+}
+
+.ChatList .date {
+  /* border: 1px solid; */
+  margin-right: 5px;
+}
+
+.ChatList .time {
+  /* border: 1px solid; */
+}
+
+.ChatList .read {
+  /* border: 1px solid blue; */
+  display: flex;
+  padding: 2px;
+  justify-content: center;
+  height: 4vh;
+  align-items: center;
+}
+
+.ChatList .show-read.isread {
+  width: fit-content;
+  /* border: 1px solid; */
+  border-radius: 50%;
+  width: 3.3vh;
+  height: 3.3vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  color: white;
+}
+
+.ChatList .empty-chatlist {
+  margin: 10px 20px;
+  background-color: white;
+  /* height: 20vh; */
+  padding: 20px 0px 20px 10px;
+  /* display: flex; */
+  /* justify-content: center; */
+  /* border-radius: 4px; */
+  font-size: 1.1rem;
+  /* align-items: center; */
+  /* box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray; */
+}
