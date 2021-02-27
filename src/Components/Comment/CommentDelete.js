@@ -27,11 +27,7 @@ const CommentDelete = ({
     setpp(!pp);
     setCommentOptionIndex(null);
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
       setPostLoading(false);
     };
 

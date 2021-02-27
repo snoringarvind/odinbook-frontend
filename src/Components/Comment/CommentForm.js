@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState, useAsync } from "react";
 
 import uniqid from "uniqid";
 import "./CommentForm.css";
@@ -35,10 +35,6 @@ const CommentForm = ({
       },
     });
 
-    setComments(comments);
-
-    setpp(!pp);
-
     if (element) {
       const remove_empty = element.querySelector(`#post-${postIndex} .empty`);
       if (remove_empty) {
@@ -66,6 +62,9 @@ const CommentForm = ({
     });
 
     valueRef.current.value = "";
+
+    setComments(comments);
+    setpp(!pp);
   };
 
   const display_errors = () => {

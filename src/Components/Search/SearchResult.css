@@ -1,8 +1,8 @@
 .SearchResult .SearchResultCard {
   display: flex;
   align-items: center;
-  padding: 20px;
-  border-bottom: 1px solid lightgray;
+  padding: 20px 0;
+  border-bottom: 1px solid darkgray;
   /* border: 1px solid; */
 }
 
@@ -15,8 +15,8 @@
   font-weight: bold;
 }
 .SearchResult {
-  margin: 9vh 2vh 2vh 2vh;
-  height: 89vh;
+  margin: 8vh 1vh 1vh 1vh;
+  height: 91vh;
   overflow-y: auto;
   background-color: white;
   border-radius: 5px;
@@ -26,6 +26,8 @@
   box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
     0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
   padding: 20px;
+
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 .SearchResult .profile-picture {
   /* border: 1px solid; */
@@ -37,7 +39,8 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: lightpink;
+
+  background-color: rgb(255, 230, 233);
   font-size: 1.5rem;
 
   margin-right: 30px;
@@ -47,14 +50,13 @@
   margin-right: 30px;
   /* border: 1px solid green; */
   flex-basis: 100%;
-  line-height: 110%;
+  line-height: 100%;
 }
 .SearchResult .name-container .name {
   /* border: 1px solid; */
   font-size: 1.3rem;
 
   font-weight: 430;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .SearchResult .name-container a {
@@ -97,4 +99,30 @@
 
 .SearchResult .chat-btn {
   color: blue;
+}
+
+@media all and (max-width: 800px), (max-device-width: 800px) {
+  .SearchResult .SearchResultCard .name-container a .name {
+    display: block;
+    font-size: 1rem;
+    /* border: 1px solid; */
+  }
+
+  .SearchResult .SearchResultCard .name-container .username {
+    font-size: 0.9rem;
+    /* border: 1px solid; */
+  }
+
+  .SearchResult .SearchResultCard .post-date {
+    font-size: 0.7rem;
+    line-height: 110%;
+  }
+
+  .SearchResult .SearchResultCard .profile-picture {
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    font-size: 1rem;
+  }
 }

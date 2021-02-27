@@ -36,6 +36,9 @@ const Hamburger = () => {
           <div className="label">Logout</div>
         </Link>
       </div>
+      <div className="box-2 box">
+        <Link to="/about">About</Link>
+      </div>
     </div>
   );
 };

@@ -17,11 +17,14 @@ const CommentCard = ({
   setComments,
   pp,
   setpp,
+  setGetLoading,
 }) => {
   const { jwtData } = useContext(OdinBookContext);
 
   // const [commentUpdateClick, setCommentUpdateClick] = useState(false);
   const [commentDeleteClick, setCommentDeleteClick] = useState(false);
+
+  const userid = JSON.parse(localStorage.getItem("local_history")).userid;
 
   return (
     <div className="CommentCard">
@@ -29,9 +32,14 @@ const CommentCard = ({
         {[...comment.user.fname[0].toLowerCase()]}
       </div>
       <div className="comment-container">
-        <div className="name">
-          {((path == "userpost" && comment.user._id !== jwtData.sub) ||
-            path == "newsfeed") && (
+        <div
+          className="name"
+          onClick={() => {
+            setGetLoading(true);
+          }}
+        >
+          {/* doin this if block because hash-router forbids visiting the same link again and the userid from localstorage is from the url */}
+          {(path == "newsfeed" || userid !== comment.user._id) && (
             <Link
               to={{
                 pathname: `/user/${comment.user.username}/posts`,
@@ -47,7 +55,7 @@ const CommentCard = ({
               <span>{comment.user.lname}</span>
             </Link>
           )}
-          {path === "userpost" && comment.user._id === jwtData.sub && (
+          {path != "newsfeed" && userid === comment.user._id && (
             <>
               <span>{comment.user.fname} </span>
               <span>{comment.user.lname}</span>

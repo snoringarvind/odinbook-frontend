@@ -11,21 +11,22 @@ const UserLikesCard = ({
   myFriends,
   setMyFriends,
   setUsersLikedIndex,
+  setGetLoading,
+  path,
 }) => {
   const [pp, setpp] = useState(false);
   const { axios_request, jwtData } = useContext(OdinBookContext);
   const [error, setError] = useState("");
+
+  const userid = JSON.parse(localStorage.getItem("local_history")).userid;
+  // console.log(userid);
 
   const clickHandler = () => {
     const route = `/friend/${value._id}`;
     const method = "POST";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};
@@ -38,17 +39,18 @@ const UserLikesCard = ({
       axios_response: cb_response,
     });
 
+    // console.log(friendBtn[index]);
     if (friendBtn[index] == false) {
       const get_index = myFriends.findIndex(
         (x) => x.username == value.username
       );
       if (get_index !== -1) {
         myFriends.splice(get_index, 1);
-        setMyFriends(myFriends);
       }
     } else {
       myFriends.push(value);
     }
+    setMyFriends(myFriends);
   };
 
   useEffect(() => {
@@ -61,6 +63,7 @@ const UserLikesCard = ({
     setpp(!pp);
   }, []);
 
+  // console.log(value._id, userid);
   return (
     <div className="UserLikesCard">
       {error && <div className="error">{error}</div>}
@@ -71,20 +74,37 @@ const UserLikesCard = ({
             {[...value.fname[0].toLowerCase()]}
           </div>
           <div className="name">
-            <Link
-              to={{
-                pathname: `/user/${value.username}/posts`,
-                state: {
-                  userid: value._id,
-                  fname: value.fname,
-                  lname: value.lname,
-                  username: value.username,
-                },
-              }}
-            >
-              <span>{value.fname}</span>
-              <span>{value.lname}</span>
-            </Link>
+            {(userid.toString() !== value._id.toString() ||
+              path == "newsfeed") && (
+              <div
+                className="clickable-link"
+                onClick={() => {
+                  setUsersLikedIndex(null);
+                  setGetLoading(true);
+                }}
+              >
+                <Link
+                  to={{
+                    pathname: `/user/${value.username}/posts`,
+                    state: {
+                      userid: value._id,
+                      fname: value.fname,
+                      lname: value.lname,
+                      username: value.username,
+                    },
+                  }}
+                >
+                  <span>{value.fname} </span>
+                  <span>{value.lname}</span>
+                </Link>
+              </div>
+            )}
+            {path !== "newsfeed" && userid.toString() === value._id.toString() && (
+              <div className="unclickable-link">
+                <span>{value.fname} </span>
+                <span>{value.lname}</span>
+              </div>
+            )}
           </div>
           {jwtData.sub !== value._id && (
             <div

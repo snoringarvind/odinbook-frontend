@@ -1,5 +1,7 @@
 import axios from "axios";
+import { set } from "mongoose";
 import React, { createContext, useEffect, useState } from "react";
+import uniqid from "uniqid";
 
 import socketIOClient from "socket.io-client";
 import Login from "./Login/Login";
@@ -8,7 +10,7 @@ import UserFriend from "./UserDetail/UserFriend";
 const ENDPOINT = "https://odinbook12.herokuapp.com";
 
 // require("dotenv").config();
-console.log("mamamamam");
+// console.log("mamamamam");
 
 const OdinBookContext = createContext();
 
@@ -46,6 +48,8 @@ const OdinBookProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   const [isAuth, setIsAuth] = useState(false);
+
+  const [errors, setErrors] = useState("");
 
   // let jwt = JSON.parse(localStorage.getItem("jwtData"));
   const [jwtData, setJwtData] = useState(
@@ -106,11 +110,11 @@ const OdinBookProvider = ({ children }) => {
 
   const [socket, setSocket] = useState("");
 
-  let headers;
   const isLogin = async () => {
     const route = "/isUserAuth";
     const method = "GET";
 
+    let headers;
     try {
       const token = jwtData.token;
       headers = { authorization: `Bearer ${token}` };
@@ -129,8 +133,10 @@ const OdinBookProvider = ({ children }) => {
       console.log("error from context login", err);
       setLoading(false);
       if (err.response) {
-        if (err.response.status == 403) {
+        if (err.response.status === 403) {
           setIsAuth(false);
+        } else {
+          setErrors(err.response.data);
         }
       }
     }
@@ -152,6 +158,20 @@ const OdinBookProvider = ({ children }) => {
       setLoading(false);
     }
   }, [isAuth]);
+
+  const display_errors = () => {
+    let arr = [];
+
+    if (!Array.isArray(errors)) {
+      arr.push(<li key={uniqid()}>{errors.msg}</li>);
+    } else {
+      for (let i = 0; i < errors.length; i++) {
+        arr.push(<li key={uniqid()}>{errors[i].msg}</li>);
+      }
+    }
+
+    return <ul className="errors">{arr}</ul>;
+  };
 
   return (
     <OdinBookContext.Provider
@@ -184,7 +204,20 @@ const OdinBookProvider = ({ children }) => {
         didMyChatListMountValue: [didMyChatListMount, setDidMyChatListMount],
       }}
     >
-      {!loading ? children : <div className="loading">loading context....</div>}
+      {!errors && (
+        <>
+          {!loading ? (
+            children
+          ) : (
+            <div className="loading-container">
+              <div className="spinner-border loading" role="status">
+                <span className="sr-only"></span>
+              </div>
+            </div>
+          )}
+        </>
+      )}
+      {errors && display_errors()}
     </OdinBookContext.Provider>
   );
 };

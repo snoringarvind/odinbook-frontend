@@ -21,9 +21,9 @@ const UserDetail = () => {
   let username = local_history.username;
   let from = local_history.from;
 
-  console.log(fname);
+  // console.log(fname);
 
-  console.log(location);
+  // console.log(location);
   return (
     <div className="UserDetail">
       <div className="user-banner-container">

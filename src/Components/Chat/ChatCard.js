@@ -72,11 +72,7 @@ const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
     const method = "PUT";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};
@@ -98,11 +94,7 @@ const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
     const method = "PUT";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};
@@ -126,11 +118,7 @@ const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
     const method = "PUT";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};
@@ -149,11 +137,7 @@ const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
     const method = "PUT";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};

@@ -18,6 +18,8 @@ const UserDetailFriendBtn = () => {
 
   const [friendBtn, setFriendBtn] = useState(false);
 
+  const [loading, setLoading] = useState(true);
+
   const location = useLocation();
 
   const local_history = JSON.parse(localStorage.getItem("local_history"));
@@ -34,6 +36,7 @@ const UserDetailFriendBtn = () => {
 
     const cb_response = (response) => {
       setMyFriends(response.data);
+      setLoading(false);
     };
 
     axios_request({
@@ -50,6 +53,7 @@ const UserDetailFriendBtn = () => {
       get_myfriends();
       setDidMyFriendsMount(false);
     } else {
+      setLoading(false);
       return;
     }
   }, []);
@@ -71,11 +75,7 @@ const UserDetailFriendBtn = () => {
     const method = "POST";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};
@@ -110,7 +110,7 @@ const UserDetailFriendBtn = () => {
   return (
     <div className="UserDetailFriendBtn">
       {error && <div className="error">{error}</div>}
-      {!error && (
+      {!error && !loading && (
         <div
           style={{ color: friendBtn ? "red" : "blue" }}
           className={

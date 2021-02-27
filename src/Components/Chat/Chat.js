@@ -79,11 +79,8 @@ const Chat = () => {
     };
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
+      setresponseloading(false);
     };
 
     axios_request({
@@ -111,11 +108,8 @@ const Chat = () => {
     };
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
+      setmsgloading(false);
     };
 
     axios_request({
@@ -147,11 +141,7 @@ const Chat = () => {
     const route = `/isreadtrue/${userid}`;
     const method = "PUT";
     const cb_error = (err) => {
-      if (error.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};

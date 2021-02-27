@@ -20,11 +20,13 @@ const UserPost = ({ path }) => {
     myNewsFeedValue,
     didMyNewsFeedMountValue,
     myFriendsValue,
+    didMyFriendsMountValue,
   } = useContext(OdinBookContext);
   const [myPosts, setMyPosts] = myPostsValue;
   const [myNewsfeed, setMyNewsFeed] = myNewsFeedValue;
   const [didMyNewsFeedMount, setDidMyNewsFeedMount] = didMyNewsFeedMountValue;
   const [didMyPostsMount, setDidMyPostsMount] = didMyPostsMountValue;
+  const [didMyFriendsMount, setDidMyFriendsMount] = didMyFriendsMountValue;
 
   const [error, setError] = useState("");
   const [getLoading, setGetLoading] = useState(true);
@@ -51,6 +53,8 @@ const UserPost = ({ path }) => {
 
   const [myFriends, setMyFriends] = myFriendsValue;
 
+  const [comments, setComments] = useState([]);
+
   //putting in an if-block since in news feed location.state will be undefined
   let userid;
   let fname;
@@ -64,6 +68,7 @@ const UserPost = ({ path }) => {
     from = local_history.from;
   }
 
+  // console.log(getLoading);
   const get_posts = () => {
     let post_list_route;
     if (path == "userpost") {
@@ -74,11 +79,7 @@ const UserPost = ({ path }) => {
 
     const post_list_method = "GET";
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
 
       setGetLoading(false);
     };
@@ -143,6 +144,39 @@ const UserPost = ({ path }) => {
       setIsOwner(false);
     }
   }, [myFriends.length]);
+
+  //this is to shows the friends in user likes;
+  const get_myfriends = () => {
+    const friend_list_route = `/friend/${jwtData.sub}`;
+    const friend_list_method = "GET";
+
+    const cb_error = (err) => {
+      setError(err.message);
+      setGetLoading(false);
+    };
+
+    const cb_response = (response) => {
+      setMyFriends(response.data);
+    };
+
+    axios_request({
+      route: friend_list_route,
+      data: "",
+      method: friend_list_method,
+      axios_error: cb_error,
+      axios_response: cb_response,
+    });
+  };
+  useEffect(() => {
+    if (didMyFriendsMount) {
+      // console.log(didMyFriendsMount);
+      get_myfriends();
+      setDidMyFriendsMount(false);
+    } else {
+      // console.log(didMyFriendsMount);
+      return;
+    }
+  }, []);
 
   const post_create_response = (response) => {
     setResult([response.data].concat(result));
@@ -272,6 +306,11 @@ const UserPost = ({ path }) => {
                       setLikeLength={setLikeLength}
                       UserLikedIndex={UserLikedIndex}
                       setUsersLikedIndex={setUsersLikedIndex}
+                      result={result}
+                      setResult={setResult}
+                      setGetLoading={setGetLoading}
+                      comments={comments}
+                      setComments={setComments}
                     />
                   );
                 })

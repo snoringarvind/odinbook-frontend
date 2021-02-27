@@ -1,11 +1,12 @@
 .UserFriend .UserFriendCard {
   display: flex;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
   border-bottom: 1px solid darkgray;
+
   /* background-color: white; */
   /* border-bottom: 1px solid lightgray; */
-  /* border: 1px solid; */
+  /* border: 1px solid ; */
 
   /* margin: 10px 20px; */
   /* border-radius: 4px; */
@@ -24,16 +25,18 @@
 }
 .UserFriend {
   /* min-height: 85vh; */
-  margin: 9vh 2vh 2vh 2vh;
+  margin: 8vh 1vh 1vh 1vh;
   /* overflow-y: auto; */
   /* min-height: 89vh; */
-  background-color: white;
+  /* background-color: white; */
   border-radius: 5px;
   /* min-height: 91vh; */
   /* border: 1px solid blue; */
   padding: 20px;
   box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
     0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 .UserFriend .profile-picture {
   /* border: 1px solid; */
@@ -45,7 +48,7 @@
   align-items: center;
   justify-content: center;
   border-radius: 50%;
-  background-color: lightpink;
+  background-color: rgb(255, 230, 233);
   font-size: 1.5rem;
 
   margin-right: 20px;
@@ -73,7 +76,6 @@
   /* border: 1px solid; */
   font-size: 1.3rem;
   font-weight: 430;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .UserFriend .username {
@@ -104,7 +106,7 @@
 
 .UserFriend:not(.UserFriend.myaccount) {
   overflow-y: auto;
-  height: 89vh;
+  height: 91vh;
 }
 .UserFriend.myaccount {
   /* border: 1px solid green; */
@@ -124,4 +126,35 @@
   font-size: 1.1rem;
   /* align-items: center; */
   /* box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray; */
+}
+
+@media all and (max-width: 800px), (max-device-width: 800px) {
+  .UserFriend .UserFriendCard .name-container a .name {
+    font-size: 1rem;
+    /* border: 1px solid; */
+    display: block;
+  }
+
+  .UserFriend .UserFriendCard .name-container .username {
+    font-size: 0.9rem;
+  }
+
+  .UserFriend .UserFriendCard .profile-picture {
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    font-size: 1rem;
+  }
+}
+
+@media all and (min-width: 700px) {
+  .UserFriend {
+    width: 700px;
+    /* margin: 7vh auto; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-left: 1px solid; */
+    /* border-right: 1px solid; */
+  }
 }

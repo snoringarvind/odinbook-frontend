@@ -29,7 +29,7 @@
   flex-basis: 100%;
 }
 .CommentForm form input {
-  border: none;
+  /* border: none; */
   display: block;
   background-color: rgb(243, 243, 243);
   border-radius: 8px;
@@ -37,9 +37,11 @@
   height: 2.3rem;
   margin-right: 5px;
   width: 100%;
+  border: 1px solid white;
 }
 
 .CommentForm form input:focus {
-  border: 1px solid darkgray;
+  border: 1px solid blue;
+  box-shadow: 0.3px 0.3px 2px blue;
   outline: none;
 }

@@ -4,33 +4,25 @@
   top: 0;
   left: 0;
   right: 0;
-  border: 1px solid green;
+  /* border: 1px solid green; */
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: 1;
 }
 
 .UserLikes .box {
   width: 80%;
-  background-color: white;
+
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+  /* background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%); */
+  /* background-color: white; */
   height: 60vh;
   padding: 20px;
   overflow-y: auto;
   /* border: 1px solid greenyellow; */
-  border-radius: 4px;
-}
-
-.UserLikes .box .form-close-btn {
-  display: flex;
-  justify-content: flex-end;
-  /* margin: 20px; */
-  /* border: 1px solid red; */
-  font-size: 1.8rem;
-  border-bottom: 1px solid darkgray;
-  padding-bottom: 10px;
-  /* margin-right: 0; */
+  border-radius: 6px;
 }
 
 .UserLikesCard {
@@ -40,18 +32,12 @@
   align-items: center;
   margin: 10px 0;
   padding: 5px;
+  background-color: white;
   border-radius: 4px;
   /* background-color: rgb(240, 240, 240); */
-
+  /* margin-bottom: 100px; */
   box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
     0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
-}
-
-.UserLikes .box .form-close-btn button {
-  cursor: pointer;
-  background-color: white;
-  /* color: white; */
-  border: none;
 }
 
 .UserLikes .UserLikesCard .profile-picture {
@@ -74,15 +60,6 @@
   /* border: 1px solid; */
 }
 
-.UserLikes .UserLikesCard .name a {
-  text-decoration: none;
-  color: black;
-}
-
-.UserLikes .UserLikesCard .name a:hover {
-  text-decoration: underline;
-}
-
 .UserLikes .UserLikesCard .add-btn-container {
   background-color: darkgray;
   min-width: 30px;
@@ -100,4 +77,58 @@
 .UserLikes .UserLikesCard .add-btn {
   font-size: 15px;
   cursor: pointer;
+}
+
+.UserLikes .UserLikesCard .unclickable-link {
+  /* border: 1px solid blue; */
+  width: fit-content;
+  color: black;
+}
+
+.UserLikes .UserLikesCard .clickable-link {
+  /* border: 1px solid green; */
+  width: fit-content;
+}
+
+.UserLikes .UserLikesCard .clickable-link a {
+  text-decoration: none;
+  color: black;
+  text-decoration: underline;
+  /* border: 1px solid red; */
+}
+
+.UserLikes .form-close-btn {
+  margin-bottom: 15px;
+  display: flex;
+  border-bottom: 2px solid darkgray;
+}
+
+.UserLikes .head-msg {
+  /* border: 1px solid red; */
+  flex-basis: 100%;
+  display: flex;
+  align-items: flex-end;
+  font-size: 1.3rem;
+  color: rgb(59, 59, 59);
+}
+
+.UserLikes .btn-close {
+  position: relative;
+  /* border: 1px solid red; */
+  display: flex;
+  /* padding: 10px; */
+  width: 30px;
+  height: 30px;
+  align-items: center;
+  justify-content: center;
+}
+
+.UserLikes .btn-close .fas {
+  position: absolute;
+  width: 100%;
+  transform: scale(1.2);
+  border: none;
+  background-color: white;
+  font-size: 25px;
+  color: black;
 }

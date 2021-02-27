@@ -8,7 +8,7 @@
 
 .ChatMap .person {
   position: relative;
-  margin: 20px 0;
+  margin: 20px 0px;
 }
 
 .ChatMap:last-child {
@@ -19,21 +19,22 @@
 .ChatMap .left {
   /* border: 1px solid green; */
   color: black;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   width: fit-content;
   max-width: 80%;
-  border-radius: 10px;
   word-wrap: break-word;
   /* border-radius: 10px; */
 }
 
 .ChatMap .right {
   padding-right: 30px;
-  background-color: rgb(238, 251, 255);
+  background-color: rgb(11, 71, 16);
+  border-radius: 10px 0px 0px 10px;
 }
 .ChatMap .left {
   padding-left: 30px;
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(53, 53, 53);
+  border-radius: 0 10px 10px 0;
 }
 
 .ChatMap .curve-right {
@@ -43,17 +44,17 @@
   float: right;
   position: absolute;
   border-radius: 0 0 0 20px;
-  background-color: white;
+  background-color: rgb(204, 204, 204);
 }
 
 .ChatMap .curve-left {
-  /* border: 3px solid green; */
+  /* border: 1px solid green; */
   height: 100%;
   width: 20px;
   float: left;
+  background-color: rgb(204, 204, 204);
   position: absolute;
   border-radius: 0 0 20px 0px;
-  background-color: white;
 }
 
 .ChatMap .curve-left::after,
@@ -65,8 +66,9 @@
 
 .ChatMap .right .date-container,
 .ChatMap .left .date-container {
-  /* border: 1px solid; */
-  font-size: 0.8rem;
+  /* border: 1px solid white; */
+  padding-bottom: 2px;
+  font-size: 12px;
   color: rgb(70, 70, 70);
 }
 
@@ -82,26 +84,30 @@
 .ChatMap .date-container .date {
   /* border: 1px solid; */
   display: flex;
-  align-items: center;
-  background-color: rgb(228, 228, 228);
+  align-items: flex-end;
+  /* background-color: rgb(228, 228, 228); */
   border-radius: 3px;
   padding: 0 2px;
+  color: rgb(184, 184, 184);
 }
 
 .ChatMap .date-container .time {
   /* border: 1px solid; */
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   margin: 0 0 0 3px;
-  background-color: rgb(228, 228, 228);
+  /* background-color: rgb(228, 228, 228); */
   border-radius: 3px;
   padding: 0 2px;
+  color: rgb(184, 184, 184);
+}
+
+.ChatMap .message {
+  /* border: 1px solid; */
+  margin-bottom: 10px;
+  color: white;
 }
 
 .ChatMap {
-  /* left: 0; */
-  /* right: 0; */
-  /* top: 0; */
-  /* border: 1px solid; */
-  /* position: absolute; */
+  /* display: flex; */
 }

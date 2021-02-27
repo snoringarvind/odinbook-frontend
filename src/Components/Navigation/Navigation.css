@@ -1,19 +1,22 @@
 .Navigation {
   display: flex;
-  /* border: 1px solid; */
 
-  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
-    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
   border-radius: 0 0 4px 4px;
   height: 7vh;
-  background-color: white;
+  /* border-bottom: 1px solid white; */
+  background-image: linear-gradient(to top, #e6e9f0 0%, #eef1f5 100%);
+  /* background-image: linear-gradient(to top, #accbee 0%, #e7f0fd 100%); */
+  /* background-color: white; */
   width: 100%;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 1;
-  box-shadow: 0.3px 0.3px 5px lightgray;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
 }
 
 .Navigation .SearchBar {
@@ -52,7 +55,7 @@
   justify-content: center;
   align-items: center;
   border-radius: 50%;
-  color: darkgray;
+  color: rgb(70, 70, 70);
   cursor: pointer;
 }
 
@@ -69,7 +72,7 @@
 .Home .Hamburger {
   position: fixed;
   top: 7vh;
-  right: 10px;
+  right: 20px;
   box-shadow: 0.3px 0.3px 5px darkgray, -0.3px -0.3px 5px darkgray;
   /* border: 1px solid yellow; */
   width: fit-content;

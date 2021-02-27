@@ -24,11 +24,7 @@ const SearchResultCard = ({
     const method = "POST";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
     };
 
     const cb_response = (response) => {};

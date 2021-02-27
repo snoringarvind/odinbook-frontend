@@ -2,8 +2,10 @@
   padding: 20px;
   border-bottom: 1px solid lightgray;
   /* border: 1px solid red; */
-  margin: 10px 20px;
-  background-color: white;
+  margin: 1.3vh 1vh;
+  /* background-color: white; */
+  /* background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%); */
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
   border-radius: 4px;
   box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
     0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
@@ -23,20 +25,20 @@
   align-items: center;
   font-size: 1.4rem;
   font-weight: 450;
+  /* border: 1px solid white; */
 }
 
 .UserPost .UserPostCard .head .name-container {
   margin-right: 30px;
   /* border: 1px solid; */
   flex-basis: 100%;
-  line-height: 110%;
+  line-height: 100%;
 }
 .UserPost .UserPostCard .head .name-container .name {
   /* border: 1px solid red; */
   font-size: 1.3rem;
   width: fit-content;
   font-weight: 430;
-  font-family: "Times New Roman", Times, serif;
 }
 
 .UserPost .UserPostCard .head .name-container .name a {
@@ -50,12 +52,16 @@
 }
 
 .UserPost .UserPostCard .head .username {
-  color: darkgray;
+  color: rgb(68, 68, 68);
+  font-size: 1rem;
 }
 
 .UserPost .UserPostCard .head {
   display: flex;
   /* border: 1px solid; */
+  border-radius: 5px;
+  background-color: white;
+  padding: 5px 4px;
   align-items: center;
   margin-bottom: 10px;
 }
@@ -68,6 +74,7 @@
   color: rgb(126, 126, 126);
   align-items: center;
   position: relative;
+  z-index: -1;
 }
 
 .UserPost .UserPostCard .head .hamburger-menu {
@@ -78,7 +85,6 @@
   background-color: white;
   color: black;
   font-size: 0.9rem;
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
   font-weight: 500;
   min-width: 200px;
   border-radius: 4px;
@@ -115,7 +121,7 @@
   align-items: center;
 }
 
-.UserPost .UserPostCard .head .option-btn .btn:hover {
+.UserPost .UserPostCard .head .option-btn .btn:focus {
   background-color: darkgray;
   cursor: pointer;
   border-radius: 4px;
@@ -128,18 +134,19 @@
 
 .UserPost .post-title {
   /* border: 1px solid green; */
-  font-weight: bold;
-  font-family: cursive;
-  font-size: 1.5rem;
+  font-family: "Roboto Slab", serif;
+  font-size: 1.3rem;
+  color: rgb(54, 54, 54);
 }
 
 .UserPost .post-content {
   margin-top: 1px;
   /* border: 1px solid; */
   /* color: rgb(61, 61, 61); */
-  color: black;
-  font-size: 1.3rem;
-  font-family: Georgia, "Times New Roman", Times, serif;
+  color: rgb(41, 41, 41);
+  font-size: 1rem;
+  line-height: 110%;
+  text-align: justify;
 }
 
 .UserPost .post-content::first-line {
@@ -150,15 +157,15 @@
   margin-top: 10px;
   /* border: 1px solid red; */
   padding-bottom: 20px;
-  border-bottom: 1px solid lightgray;
+  border-bottom: 1px solid white;
 }
 
 .UserPost .card-footer {
   display: flex;
   justify-content: space-around;
   /* border: 1px solid red; */
-  border-top: 1px solid lightgray;
-  border-bottom: 1px solid lightgray;
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
   font-size: 1.3rem;
   /* margin: 10px 0; */
   height: 7vh;
@@ -167,8 +174,7 @@
 }
 
 .UserPost .card-footer .comment-icon:hover,
-.UserPost .like-icon:hover,
-.UserPost .share-icon:hover {
+.UserPost .like-icon:hover {
   transform: scale(1.1);
   cursor: pointer;
   /* color: blue; */
@@ -177,7 +183,9 @@
 .UserPost .UserPostCard .comment-list {
   /* border: 1px solid red; */
   max-height: 60vh;
-  overflow: auto;
+  overflow-y: auto;
+  width: 100%;
+  overflow-x: hidden;
   border-radius: 4px;
   /* margin: 15px 0; */
   padding: 10px;
@@ -219,7 +227,7 @@
 }
 
 .UserPost:not(.UserPost.myaccount) {
-  border: 1px solid red;
+  /* border: 1px solid red; */
   margin-top: 7vh;
   height: 93vh;
   overflow-y: auto;
@@ -231,4 +239,81 @@
   overflow-y: hidden;
   /* min-height: 100vh; */
   /* height: 100vh; */
+  height: fit-content;
+}
+
+.UserPost .post-date {
+  /* display: flex; */
+  /* border: 1px solid; */
+  margin: 0 5px;
+  color: rgb(65, 65, 65);
+  font-size: 0.8rem;
+}
+
+.UserPost .post-date div {
+  margin: 0 2px;
+  display: flex;
+  justify-content: center;
+}
+
+.UserPost .share-icon {
+  position: relative;
+  cursor: pointer;
+  /* z-index: -1; */
+}
+
+.UserPost #copy {
+  /* border: 1px solid; */
+  position: absolute;
+  top: -7vh;
+  right: 50%;
+  left: 50%;
+  transform: translateX(-50%);
+  /* left: -300%; */
+  /* transform: translateX(0%); */
+  /* transform: translateY(-250%); */
+  font-size: 20px;
+  width: 150px;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+
+  background-color: rgba(15, 15, 15, 0.3);
+}
+
+@media all and (max-width: 800px), (max-device-width: 800px) {
+  .UserPost .UserPostCard .head .name-container .name {
+    font-size: 1rem;
+    /* border: 1px solid; */
+    display: block;
+  }
+
+  .UserPost .UserPostCard .head .name-container .username {
+    font-size: 0.9rem;
+  }
+
+  .UserPost .UserPostCard .post-date {
+    font-size: 0.7rem;
+    line-height: 110%;
+  }
+
+  .UserPost .UserPostCard .head .profile-picture {
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    font-size: 1rem;
+  }
+}
+
+@media all and (min-width: 700px) {
+  .UserPost {
+    width: 700px;
+    /* margin: 7vh auto; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-left: 1px solid; */
+    /* border-right: 1px solid; */
+  }
 }

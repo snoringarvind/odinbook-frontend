@@ -22,36 +22,30 @@ import { OdinBookContext } from "../Context";
 import Chat from "../Chat/Chat";
 import ChatList from "../ChatList/ChatList";
 import Menu from "./Menu";
+import PageNotFound from "../PageNotFound/PageNotFound";
+import Resume from "../Resume/Resume";
 
 const Home = () => {
   let location = useLocation();
   let background = location.state && location.state.background;
-  // const [isClick, setIsclick] = useState(false);
-
-  // let isClick = false;
-
-  const isClick = useRef(false);
-
-  useEffect(() => {
-    console.log(isClick.current);
-  }, []);
+  const [isClick, setIsclick] = useState(false);
 
   const { isAuthValue, jwtData } = useContext(OdinBookContext);
   const [isAuth, setIsAuth] = isAuthValue;
 
   const path = location.pathname;
 
-  const params = useParams();
-
   //doing this if /search/:name;
   const search_url_params = location.pathname.split("/")[1];
 
   //doing this if-block, incase if the user refreshes the page the state will vanish so we will store the previous state values in localstorage
   if (
-    location.pathname !== "/" &&
-    location.pathname !== "/friends" &&
-    location.pathname !== "/mychat" &&
-    search_url_params !== "search"
+    path !== "/" &&
+    path !== "/friends" &&
+    path !== "/mychat" &&
+    search_url_params !== "search" &&
+    path !== "/login" &&
+    path !== "/signup"
   ) {
     if (location.state) {
       localStorage.setItem(
@@ -65,9 +59,22 @@ const Home = () => {
         })
       );
     }
+    //this else block is for when the user logs in
+  } else if (isAuth && (path === "/signup" || path === "/login")) {
+    // console.log("hellllooooo");
+    localStorage.setItem(
+      "local_history",
+      JSON.stringify({
+        userid: jwtData.sub,
+        fname: jwtData.fname,
+        lname: jwtData.lname,
+        username: jwtData.user,
+        from: path,
+      })
+    );
   }
 
-  console.log(JSON.parse(localStorage.getItem("local_history")));
+  // console.log(JSON.parse(localStorage.getItem("local_history")));
   useEffect(() => {
     const x = window;
     x.addEventListener("click", (e) => {
@@ -93,8 +100,7 @@ const Home = () => {
             p[i] !== "ham-icon" &&
             p[i] !== "close-icon"
           ) {
-            // setIsclick(false);
-            isClick.current = false;
+            setIsclick(false);
           }
           arr = [];
         }
@@ -132,54 +138,53 @@ const Home = () => {
               {/* mychat will show the list of conversations */}
               {/*for now keeping chat list aside */}
               <Navigation to="/mychat" label="fab fa-facebook-messenger" />
+
+              {/* width 32% */}
             </div>
             <Menu />
           </div>
         </>
       )}
 
-      <Switch location={background || location}>
-        {isAuth && (
-          <>
-            <Route exact path="/">
-              <UserPost path="newsfeed" />
-            </Route>
-            <Route exect path="/user/:username">
-              <UserDetail />
-            </Route>
-            <Route path="/search/:name">
-              <SearchResult />
-            </Route>
-            <Route path="/logout">
-              <Logout />
-            </Route>
-            <Route exact path="/friends">
-              <UserFriend path="myfriends" />
-            </Route>
-            <Route path="/chat">
-              <Chat />
-            </Route>
-            <Route path="/mychat">
-              <ChatList />
-            </Route>
-          </>
-        )}
-
-        {!isAuth && (
-          <>
-            <Route path="/signup">
-              <Signup />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-          </>
-        )}
-      </Switch>
-
-      {/* <Route path="/delete-post/mypost:id">
-        <MyPostDelete />
-      </Route> */}
+      {isAuth && (
+        <Switch>
+          <Route exact path="/">
+            <UserPost path="newsfeed" />
+          </Route>
+          <Route exect path="/user/:username">
+            <UserDetail />
+          </Route>
+          <Route path="/search/:name">
+            <SearchResult />
+          </Route>
+          <Route path="/logout">
+            <Logout />
+          </Route>
+          <Route exact path="/friends">
+            <UserFriend path="myfriends" />
+          </Route>
+          <Route path="/chat">
+            <Chat />
+          </Route>
+          <Route path="/mychat">
+            <ChatList />
+          </Route>
+          <Route path="/about">
+            <Resume />
+          </Route>
+          <Route component={PageNotFound} />
+        </Switch>
+      )}
+      {!isAuth && (
+        <Switch>
+          <Route path="/signup">
+            <Signup />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+        </Switch>
+      )}
     </div>
   );
 };

@@ -1,18 +1,15 @@
 .Chat form {
-  /* border: 1px solid; */
-  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
-    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
-
   position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
-  margin: 10px 20px;
-  border-radius: 4px;
-  background-color: white;
-  height: 9vh;
+  /* margin: 10px 20px; */
+  /* border-radius: 4px; */
+  background-color: black;
+  height: 8vh;
   padding: 10px;
   z-index: 1;
+  border: 1px solid;
 }
 
 /* to hover send btn next to input */
@@ -24,14 +21,16 @@
   background-color: green;
   border: none;
   color: white;
+  width: 80%;
+  font-size: 1.2rem;
 }
 
 .Chat .form-group .send-btn {
-  /* border: 1px solid; */
+  /* border: 1px solid white; */
   position: absolute;
   right: 0;
   /* top: 0; */
-  width: 15%;
+  width: 20%;
   display: flex;
   justify-content: center;
   top: 50%;
@@ -43,19 +42,14 @@
   /* left: 0; */
   /* right: 0; */
   /* top: 0; */
-  width: 83%;
+  width: 80%;
+  max-width: 80%;
   padding: 5px 20px;
+  font-size: 1.2rem;
   top: 50%;
   transform: translateY(-50%);
   border: 2px solid black;
-  border-radius: 4px;
-  outline: none;
-}
-
-.Chat .form-group input:focus {
-  border: 1px solid blue;
-  box-shadow: 0.01px 0.01px 4px blue;
-  /* outline: 1px solid blue; */
+  border-radius: 15px;
   outline: none;
 }
 
@@ -67,7 +61,8 @@
 .Chat .head-top {
   display: flex;
   /* border: 1px solid; */
-  background-color: white;
+  background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  /* background-color: white; */
   height: 7vh;
   align-items: center;
   box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
@@ -77,6 +72,10 @@
   left: 0;
   right: 0;
   top: 7vh;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+  -o-box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
   /* z-index: 1; */
 }
 
@@ -105,4 +104,41 @@
   overflow-y: auto;
   width: 100%;
   padding: 0;
+  background-image: url("../../john-fowler-RsRTIofe0HE-unsplash.jpg");
+  /* background-repeat: repeat; */
+  background-size: cover;
+  background-position: center;
+  /* opacity: 0.1; */
+  /* background-color: rgba(0, 0, 0, 0.9); */
+  /* z-index: -1; */
+}
+
+@media only screen and (max-width: 800px) {
+  .Chat {
+    background-image: url("../../masaaki-komori-14cHwhRKJh8-unsplash.jpg");
+  }
+}
+
+@media only screen and (max-device-width: 800px) {
+  .Chat {
+    background-image: url("../../masaaki-komori-14cHwhRKJh8-unsplash.jpg");
+  }
+}
+
+@media all and (min-width: 700px) {
+  .Chat {
+    width: 700px;
+    /* margin: 7vh auto; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-left: 1px solid; */
+    /* border-right: 1px solid; */
+  }
+
+  .Chat form {
+    bottom: 0;
+    width: 700px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }

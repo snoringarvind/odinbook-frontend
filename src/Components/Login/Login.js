@@ -91,14 +91,7 @@ const Login = () => {
               <button
                 onClick={(e) => {
                   e.preventDefault();
-                  if (postLoading) {
-                    return;
-                  } else if (
-                    refUsername.current.value === "" ||
-                    refPassword.current.value === ""
-                  ) {
-                    return;
-                  } else {
+                  if (!postLoading) {
                     return axios_login();
                   }
                 }}

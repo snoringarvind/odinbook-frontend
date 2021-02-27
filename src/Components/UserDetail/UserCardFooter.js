@@ -12,7 +12,7 @@ const UserCardFooter = ({
   onlyOneClick,
   like_post,
 }) => {
-  console.log(likeClick);
+  // console.log(likeClick);
   return (
     <div className="UserCardFooter">
       <div className="card-footer">

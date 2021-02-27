@@ -39,11 +39,7 @@ const UserAbout = () => {
       setGetLoading(false);
     };
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
       setGetLoading(false);
     };
 

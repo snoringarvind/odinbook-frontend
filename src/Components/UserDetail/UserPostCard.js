@@ -3,7 +3,7 @@ import CommentCard from "../CommentCard/CommentCard";
 import uniqid from "uniqid";
 import UserLikes from "./UserLikes";
 import { OdinBookContext } from "../Context";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import CommentCreate from "../Comment/CommentCreate";
 import UserNuLikes from "./UserNuLikes";
 import UserCardFooter from "./UserCardFooter";
@@ -22,19 +22,24 @@ const UserPostCard = ({
   setDeleteClick,
   deleteClick,
   setPostIndex,
-  likeClick,
-  setLikeClick,
+  // likeClick,
+  // setLikeClick,
   postsLength,
   UserLikedIndex,
   setUsersLikedIndex,
-  likeLength,
-  setLikeLength,
+  // likeLength,
+  // setLikeLength,
   path,
+  result,
+  setResult,
+  setGetLoading,
+  // comments,
+  // setComments,
 }) => {
   const [cardError, setCardError] = useState("");
   const [commentError, setCommentError] = useState("");
-  const [comments, setComments] = useState([]);
-  const [commentIconClicked, setCommentIconClicked] = useState(false);
+
+  const [commentIconClicked, setCommentIconClicked] = useState([]);
   const [commentsLoading, setCommentsLoading] = useState(true);
   // const [newCommentLoading, setNewCommentLoading] = useState(false);
   const [onlyOneClick, setonlyOneClick] = useState(true);
@@ -42,11 +47,15 @@ const UserPostCard = ({
   const [commentOptionIndex, setCommentOptionIndex] = useState(null);
   const { jwtData, axios_request } = useContext(OdinBookContext);
 
+  const [comments, setComments] = useState([]);
+
   // const [UserLikedIndex, setUsersLikedIndex] = useState(false);
-  // const [likeLength, setLikeLength] = useState([]);
+  const [likeLength, setLikeLength] = useState([]);
+  const [likeClick, setLikeClick] = useState([]);
 
   const location = useLocation();
 
+  // console.log(result);
   // console.log(likeLength);
   let fname;
   let lname;
@@ -64,12 +73,8 @@ const UserPostCard = ({
     const like_post_route = `/post/${postid}/like`;
     const like_post_method = "POST";
     const cb_error = (err) => {
-      console.log(err);
-      if (err.response) {
-        setCardError(err.response.data);
-      } else {
-        setCardError(err.message);
-      }
+      // console.log(err);
+      setCardError(err);
     };
     const cb_response = (response) => {};
 
@@ -87,15 +92,12 @@ const UserPostCard = ({
     const comments_method = "GET";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setCommentError(err.response.data);
-      } else {
-        setCommentError(err.mesage);
-      }
+      setCommentError(err);
       setCommentsLoading(false);
     };
     const cb_response = (response) => {
       setComments(response.data);
+      // console.log(response.data);
       setCommentsLoading(false);
     };
 
@@ -122,14 +124,19 @@ const UserPostCard = ({
 
   useEffect(() => {
     const g = value.like.includes(jwtData.sub);
+
+    // console.log(value, g);
     likeClick[index] = g;
     setLikeClick(likeClick);
-    likeLength[index] = Number([value.like.length]);
+    likeLength[index] = Number(value.like.length);
     setLikeLength(likeLength);
     setpp(!pp);
   }, []);
 
-  console.log(value, path);
+  const minute = new Date(value.created_at).getMinutes();
+  const hour = new Date(value.created_at).getHours();
+
+  const [copyState, setCopyState] = useState(false);
   return (
     <div className="UserPostCard">
       <div className="head">
@@ -166,6 +173,15 @@ const UserPostCard = ({
 
           <div className="username">
             {username ? username : value.user.username}
+          </div>
+        </div>
+        <div className="post-date">
+          <div>{new Date(value.created_at).toLocaleDateString()}</div>
+          <div>
+            <span>{hour > 12 ? hour - 12 : hour === 0 ? 12 : hour}:</span>
+
+            <span>{minute < 10 ? "0" + minute : minute}</span>
+            <span>{hour > 12 ? "pm" : "am"}</span>
           </div>
         </div>
         {isOwner && (
@@ -229,26 +245,35 @@ const UserPostCard = ({
         <div className="post-title">{value.title}</div>
         <div className="post-content">{value.content_text}</div>
       </div>
-      <div
-        className="no-like"
-        onClick={(e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          setUsersLikedIndex(index);
+      {cardError && <div className="card-error error"> {cardError}</div>}
+      {!cardError && (
+        <div
+          className="no-like"
+          onClick={(e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            setUsersLikedIndex(index);
 
-          setpp(!pp);
-        }}
-      >
-        {/* <span>{likeLength[index]} </span> */}
-        <span>{likeLength[index]} </span>
+            setpp(!pp);
+          }}
+        >
+          {/* <span>{likeLength[index]} </span> */}
+          <span>{likeLength[index]} </span>
 
-        <span> </span>
-        <span> {likeLength[index] == 1 ? "like" : "likes"}</span>
-      </div>
+          <span> </span>
+          <span> {likeLength[index] == 1 ? "like" : "likes"}</span>
+        </div>
+      )}
 
       {UserLikedIndex == index && (
-        <UserLikes postid={value._id} setUsersLikedIndex={setUsersLikedIndex} />
+        <UserLikes
+          postid={value._id}
+          setUsersLikedIndex={setUsersLikedIndex}
+          setGetLoading={setGetLoading}
+          path={path}
+        />
       )}
+
       <div className="card-footer">
         <div
           style={{
@@ -259,11 +284,25 @@ const UserPostCard = ({
             e.preventDefault();
             like_post(value._id);
             if (likeClick[index] == true) {
-              likeLength[index] = Number(Number(likeLength[index]) - 1);
+              likeLength[index] = likeLength[index] - 1;
               setLikeLength(likeLength);
+
+              const check = result[index].like.findIndex(
+                (x) => x.toString() === jwtData.sub.toString()
+              );
+
+              //this is a kind of an extra precautionary measure
+              //say if the page re-renders for some reason , the like values will be lost since  I was not saving the values in result
+              //now I am using a child component for the hamburger menu but previously the page used to re-render on every click on hamburger.
+              //but now the page won't re-render , but still I would like to do this step.
+              result[index].like.splice(check, 1);
+              setResult(result);
             } else {
-              likeLength[index] = Number(Number(likeLength[index]) + 1);
+              likeLength[index] = likeLength[index] + 1;
               setLikeLength(likeLength);
+
+              result[index].like.push(jwtData.sub);
+              setResult(result);
             }
             likeClick[index] = !likeClick[index];
             setLikeClick(likeClick);
@@ -280,17 +319,46 @@ const UserPostCard = ({
               get_comments(value._id);
               setonlyOneClick(false);
             }
-            setCommentIconClicked(!commentIconClicked);
+            // console.log(commentIconClicked, index);
+            // setCommentIconClicked();
+            // console.log(commentIconClicked[index]);
+            if (commentIconClicked[index] === undefined) {
+              commentIconClicked[index] = true;
+            } else {
+              commentIconClicked[index] = !commentIconClicked[index];
+            }
+            setpp(!pp);
+            setCommentIconClicked(commentIconClicked);
           }}
         ></div>
-        <div className="share-icon far fa-share-square"></div>
+        <div
+          className="share-icon far fa-share-square"
+          onClick={() => {
+            const element = document.createElement("textarea");
+            element.value = window.location.href;
+            document.body.appendChild(element);
+            element.select();
+            document.execCommand("copy");
+            document.body.removeChild(element);
+            setCopyState(true);
+
+            setTimeout(() => {
+              setCopyState(false);
+            }, 900);
+          }}
+        >
+          {copyState && <div id="copy">Link Copied!!</div>}
+        </div>
       </div>
       <div className="comment-list" id={`post-${index}`}>
-        {commentIconClicked && commentError && (
+        {commentIconClicked[index] && commentError && (
           <div className="error">{commentError}</div>
         )}
-        {commentIconClicked && !commentError && commentsLoading && "loading..."}
-        {commentIconClicked &&
+        {commentIconClicked[index] &&
+          !commentError &&
+          commentsLoading &&
+          "loading..."}
+        {commentIconClicked[index] &&
           !commentError &&
           !commentsLoading &&
           commentIconClicked &&
@@ -318,6 +386,7 @@ const UserPostCard = ({
                   setComments={setComments}
                   pp={pp}
                   setpp={setpp}
+                  setGetLoading={setGetLoading}
                 />
               ))}
             </>
@@ -325,7 +394,7 @@ const UserPostCard = ({
         {/* 
         <div>{newCommentLoading && "loading..."}</div> */}
       </div>
-      {commentIconClicked && (
+      {commentIconClicked[index] && !commentsLoading && (
         <CommentCreate
           postid={value._id}
           key={uniqid()}

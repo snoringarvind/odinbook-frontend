@@ -31,11 +31,8 @@ const ChatList = () => {
     const method = "GET";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
+      setChatListLoading(false);
     };
 
     const cb_response = (response) => {
@@ -76,11 +73,8 @@ const ChatList = () => {
     const method = "GET";
 
     const cb_error = (err) => {
-      if (err.response) {
-        setError(err.response.data);
-      } else {
-        setError(err.message);
-      }
+      setError(err.message);
+      setIsreadLoading(false);
     };
     const cb_response = (response) => {
       setIsRead(response.data.users);

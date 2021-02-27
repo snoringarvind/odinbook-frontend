@@ -1,0 +1,23 @@
+.Resume {
+  width: 100%;
+  height: 93vh;
+  margin-top: 7vh;
+  overflow-y: auto;
+  /* display: flex; */
+  /* align-items: center; */
+}
+.Resume img {
+  width: 100%;
+  height: auto;
+}
+
+@media all and (min-width: 800px) {
+  .Resume {
+    width: 800px;
+    /* margin: 7vh auto; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-left: 1px solid; */
+    /* border-right: 1px solid; */
+  }
+}
