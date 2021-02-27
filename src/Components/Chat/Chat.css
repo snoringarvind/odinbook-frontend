@@ -113,15 +113,9 @@
   /* z-index: -1; */
 }
 
-@media only screen and (max-width: 800px) {
+@media only screen and (max-width: 800px), (max-device-width: 800px) {
   .Chat {
-    background-image: url("../../masaaki-komori-14cHwhRKJh8-unsplash.jpg");
-  }
-}
-
-@media only screen and (max-device-width: 800px) {
-  .Chat {
-    background-image: url("../../masaaki-komori-14cHwhRKJh8-unsplash.jpg");
+    background-image: url("../../chat_background.jpg");
   }
 }
 

@@ -228,7 +228,7 @@
 
 .UserPost:not(.UserPost.myaccount) {
   /* border: 1px solid red; */
-  margin-top: 7vh;
+  /* margin-top: 7vh; */
   height: 93vh;
   overflow-y: auto;
 }
@@ -236,10 +236,14 @@
 .UserPost.myaccount {
   margin-top: 0;
   /* border: 1px solid green; */
-  overflow-y: hidden;
+  /* overflow-y: hidden; */
   /* min-height: 100vh; */
   /* height: 100vh; */
   height: fit-content;
+}
+
+.UserPost {
+  margin-top: 7vh;
 }
 
 .UserPost .post-date {

@@ -22,7 +22,7 @@
 .Navigation .SearchBar {
   /* border: 1px solid blue; */
   width: 60%;
-  padding: 10px;
+  padding: 10px 0 10px 10px;
   display: flex;
   align-items: center;
 }
@@ -46,15 +46,13 @@
 }
 .Navigation .drop-btn,
 .Navigation .nav-links a {
-  min-width: 40px;
+  /* min-width: 40px; */
   /* max-width: 7vh; */
-  display: block;
+  /* display: flex; */
   height: 100%;
   /* border: 1px solid green; */
   display: flex;
-  justify-content: center;
   align-items: center;
-  border-radius: 50%;
   color: rgb(70, 70, 70);
   cursor: pointer;
   /* width: 10%; */
@@ -129,22 +127,9 @@
 }
 
 .Menu {
-  width: 8%;
+  /* border: 1px solid; */
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: 1px solid; */
-}
-
-.Menu .drop-btn {
-  border-radius: 50%;
-  min-width: 23px;
-  max-width: 23px;
-  max-height: 23px;
-  min-height: 23px;
-  background-color: rgb(32, 32, 32);
-}
-
-.Menu .ham-icon {
-  color: white;
+  width: 8%;
 }
