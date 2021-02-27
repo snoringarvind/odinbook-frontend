@@ -23,7 +23,7 @@ const SearchBar = () => {
 
   return (
     <div className="SearchBar">
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} autoComplete="off">
         <input
           type="text"
           id="search"

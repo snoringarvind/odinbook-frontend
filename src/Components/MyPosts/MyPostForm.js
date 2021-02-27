@@ -95,7 +95,7 @@ const MyPostForm = ({
             ></div>
           </div>
 
-          <form>
+          <form autoComplete="off">
             <div className="form-group">
               <label htmlFor="title">Title</label>
               <input

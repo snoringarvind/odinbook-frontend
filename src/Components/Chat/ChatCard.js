@@ -162,7 +162,7 @@ const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
               <span>{lname}</span>
             </div>
           </div>
-          <form>
+          <form autoComplete="off">
             <div className="form-group">
               <input
                 type="text"

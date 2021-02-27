@@ -108,6 +108,7 @@ const UseraAboutCard = ({
       {!error && (
         <>
           <form
+            autoComplete="off"
             onSubmit={(e) => {
               e.preventDefault();
               return;

@@ -57,12 +57,13 @@
   border-radius: 50%;
   color: rgb(70, 70, 70);
   cursor: pointer;
+  /* width: 10%; */
 }
 
 .Navigation .left-nav {
   display: flex;
   justify-content: space-evenly;
-  width: 40%;
+  width: 32%;
   /* border: 1px solid; */
   /* border: 1px solid rgb(220, 246, 255); */
 }
@@ -125,4 +126,25 @@
 
 .Hamburger .box-2 a {
   display: block;
+}
+
+.Menu {
+  width: 8%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: 1px solid; */
+}
+
+.Menu .drop-btn {
+  border-radius: 50%;
+  min-width: 23px;
+  max-width: 23px;
+  max-height: 23px;
+  min-height: 23px;
+  background-color: rgb(32, 32, 32);
+}
+
+.Menu .ham-icon {
+  color: white;
 }
