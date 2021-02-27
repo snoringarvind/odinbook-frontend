@@ -1,15 +1,14 @@
 .Login {
   /* border: 1px solid; */
-  min-height: 93vh;
+  height: 93vh;
+  overflow-y: auto;
   position: relative;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 .Login form {
-  top: 10%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  width: fit-content;
+  margin: 20px auto;
   /* border: 1px solid; */
   padding: 30px;
   border-radius: 4px;

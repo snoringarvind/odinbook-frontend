@@ -1,16 +1,17 @@
 .Signup {
-  /* border: 1px solid; */
-  min-height: 93vh;
+  border: 1px solid;
+  height: 93vh;
+  /* padding: 30px; */
+  overflow-y: auto;
   position: relative;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
 
 .Signup form {
-  top: 10%;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   /* border: 1px solid; */
+  width: fit-content;
+  margin: 20px auto;
+  /* margin-top: 20px; */
   padding: 30px;
   border-radius: 4px;
   background-color: rgb(200, 221, 228);
