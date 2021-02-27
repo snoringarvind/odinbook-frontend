@@ -103,7 +103,7 @@ const Signup = () => {
           <div className="form-group">
             <label htmlFor="password">Password:</label>
             <input
-              type="text"
+              type="password"
               name="password"
               id="password"
               placeholder="Enter your password"
