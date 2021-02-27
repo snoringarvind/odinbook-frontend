@@ -9,7 +9,6 @@ import MyPostUpdate from "../MyPosts/MyPostUpdate";
 import UserPostCard from "./UserPostCard";
 import MyPostDelete from "../MyPosts/MyPostDelete";
 import WelcomeMsg from "../WelcomeMsg/WelcomeMsg";
-import UserFriend from "./UserFriend";
 
 const UserPost = ({ path }) => {
   const {
@@ -136,7 +135,7 @@ const UserPost = ({ path }) => {
         setIsOwner(false);
       }
     }
-  }, [location.pathname, from, myPosts]);
+  }, [location.pathname, from]);
 
   useEffect(() => {
     if (path === "newsfeed") {
@@ -179,15 +178,15 @@ const UserPost = ({ path }) => {
   }, []);
 
   const post_create_response = (response) => {
-    setResult([response.data].concat(result));
-    setMyPosts([response.data].concat(myPosts));
+    myPosts.unshift(response.data);
+    setMyPosts(myPosts);
+    setResult(myPosts);
   };
 
   const post_update_response = (response) => {
-    result[updateIndex] = response.data;
-    setResult(result);
     myPosts[updateIndex] = response.data;
     setMyPosts(myPosts);
+    setResult(myPosts);
   };
 
   //using updateindex for update and delete same
@@ -195,11 +194,12 @@ const UserPost = ({ path }) => {
     //as soon as we get the response delete the post from the screen
 
     console.log(updateIndex);
-    result.splice(updateIndex, 1);
-    setResult(result);
 
+    console.log(myPosts);
     myPosts.splice(updateIndex, 1);
     setMyPosts(myPosts);
+    setResult(myPosts);
+    console.log(myPosts);
 
     //we are doing this here bcoz jab tak child component mein value change nahi hota parent component re-render nahi hoga.
     //MyPostDelete meinn setDelteClick mein same component mein hi deleteClick value change karna pad raha tha isliye UserPost re-render nahi ho raha tha.
