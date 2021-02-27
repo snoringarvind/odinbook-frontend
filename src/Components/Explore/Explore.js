@@ -82,7 +82,7 @@ const Explore = () => {
   }, []);
 
   // console.log(getLoading, get_friends_loading);
-
+  let options = true;
   return (
     <div className="Explore">
       {error && <div className="error">{error}</div>}
@@ -94,10 +94,18 @@ const Explore = () => {
             //we will only show users who are not my(logged-in user) friends
 
             const isFriend = myFriends.find((x) => x._id === value._id);
+
             if (!isFriend && jwtData.sub !== value._id) {
+              options = false;
               return <ExploreCard value={value} index={index} key={uniqid()} />;
             }
           })}
+          {options == true && (
+            <p>
+              Okay, evey user in OdinBook's database is in your friend list. So
+              no suggestions :(
+            </p>
+          )}
         </>
       )}
     </div>
