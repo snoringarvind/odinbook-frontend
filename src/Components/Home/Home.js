@@ -24,6 +24,7 @@ import ChatList from "../ChatList/ChatList";
 import Menu from "./Menu";
 import PageNotFound from "../PageNotFound/PageNotFound";
 import Resume from "../Resume/Resume";
+import Explore from "../Explore/Explore";
 
 const Home = () => {
   let location = useLocation();
@@ -139,6 +140,8 @@ const Home = () => {
               {/*for now keeping chat list aside */}
               <Navigation to="/mychat" label="fab fa-facebook-messenger" />
 
+              <Navigation to="/explore" label="fas fa-search" />
+
               {/* width 32% */}
             </div>
             <Menu />
@@ -171,6 +174,10 @@ const Home = () => {
           </Route>
           <Route path="/about">
             <Resume />
+          </Route>
+
+          <Route path="/explore">
+            <Explore />
           </Route>
           <Route component={PageNotFound} />
         </Switch>

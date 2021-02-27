@@ -1,0 +1,143 @@
+.Explore .ExploreCard {
+  display: flex;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid darkgray;
+}
+
+.Explore .ExploreCard:last-child {
+  border-bottom: none;
+}
+
+.Explore .people {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+.Explore {
+  margin: 8vh 1vh 1vh 1vh;
+  border-radius: 5px;
+  padding: 20px;
+  box-shadow: 0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray,
+    0.3px 0.3px 4px lightgray, -0.3px -0.3px 4px lightgray;
+
+  background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
+}
+.Explore .profile-picture {
+  max-height: 50px;
+  min-height: 50px;
+  min-width: 50px;
+  max-width: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background-color: rgb(255, 230, 233);
+  font-size: 1.5rem;
+
+  margin-right: 20px;
+}
+
+.Explore .name-container {
+  margin-right: 30px;
+  /* border: 1px solid; */
+  flex-basis: 100%;
+  line-height: 100%;
+}
+
+.Explore .name-container a {
+  /* border: 1px solid; */
+  display: block;
+  width: fit-content;
+  text-decoration: none;
+  color: black;
+}
+
+.Explore .name-container a:hover {
+  text-decoration: underline;
+}
+.Explore .name-container .name {
+  /* border: 1px solid; */
+  font-size: 1.3rem;
+  font-weight: 430;
+}
+
+.Explore .username {
+  color: rgb(78, 78, 78);
+  font-size: 1rem;
+}
+
+.Explore .add-btn,
+.Explore .chat-btn {
+  cursor: pointer;
+  /* border: 1px solid red; */
+  width: 2.3rem;
+  min-width: 2.3rem;
+  min-height: 2.3rem;
+  height: 2.3rem;
+  display: flex;
+  margin: 0 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background-color: rgb(236, 236, 236);
+}
+
+.Explore .add-btn:hover {
+  transform: scale(1.01);
+  background-color: lightgray;
+}
+
+.Explore:not(.Explore.myaccount) {
+  overflow-y: auto;
+  height: 91vh;
+}
+.Explore.myaccount {
+  /* border: 1px solid green; */
+  margin-top: 0;
+  /* overflow-y: hidden; */
+  height: fit-content;
+}
+
+.Explore .empty-friends {
+  margin: 10px 20px;
+  background-color: white;
+  /* height: 20vh; */
+  padding: 20px 0px 20px 10px;
+  /* display: flex; */
+  /* justify-content: center; */
+  border-radius: 4px;
+  font-size: 1.1rem;
+  /* align-items: center; */
+  /* box-shadow: 0.3px 0.3px 4px darkgray, -0.3px -0.3px 4px darkgray; */
+}
+
+@media all and (max-width: 800px), (max-device-width: 800px) {
+  .Explore .ExploreCard .name-container a .name {
+    font-size: 1rem;
+    /* border: 1px solid; */
+    display: block;
+  }
+
+  .Explore .ExploreCard .name-container .username {
+    font-size: 0.9rem;
+  }
+
+  .Explore .ExploreCard .profile-picture {
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 40px;
+    max-width: 40px;
+    font-size: 1rem;
+  }
+}
+
+@media all and (min-width: 700px) {
+  .Explore {
+    width: 700px;
+    /* margin: 7vh auto; */
+    margin-left: auto;
+    margin-right: auto;
+    /* border-left: 1px solid; */
+    /* border-right: 1px solid; */
+  }
+}
