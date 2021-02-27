@@ -101,6 +101,7 @@ const UserFriend = ({ path }) => {
       className={path === "myfriends" ? "UserFriend" : "UserFriend myaccount"}
     >
       {error && <div className="error">{error}</div>}
+      {!error && <h2 className="title-msg">My Friends.</h2>}
       {!error && (
         <>
           {getLoading && (
@@ -130,22 +131,24 @@ const UserFriend = ({ path }) => {
                 )}
               </div>
             ) : (
-              result.map((value, index) => {
-                return (
-                  <UserFriendCard
-                    value={value}
-                    index={index}
-                    setError={setError}
-                    key={uniqid()}
-                    friendBtn={friendBtn}
-                    setFriendBtn={setFriendBtn}
-                    userid={userid}
-                    isChanged={isChanged}
-                    setIsChanged={setIsChanged}
-                    path={path}
-                  />
-                );
-              })
+              <>
+                {result.map((value, index) => {
+                  return (
+                    <UserFriendCard
+                      value={value}
+                      index={index}
+                      setError={setError}
+                      key={uniqid()}
+                      friendBtn={friendBtn}
+                      setFriendBtn={setFriendBtn}
+                      userid={userid}
+                      isChanged={isChanged}
+                      setIsChanged={setIsChanged}
+                      path={path}
+                    />
+                  );
+                })}
+              </>
             ))}
         </>
       )}

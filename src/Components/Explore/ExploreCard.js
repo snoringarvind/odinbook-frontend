@@ -30,7 +30,8 @@ const ExploreCard = ({ value, index }) => {
       axios_response: cb_response,
     });
 
-    if (friendBtn == false) {
+    // console.log(friendBtn);
+    if (friendBtn) {
       const get_index = myFriends.findIndex(
         (x) => x.username == value.username
       );
@@ -83,7 +84,7 @@ const ExploreCard = ({ value, index }) => {
               <div
                 // style={{ color: "blue" }}
                 className={
-                  friendBtn[index]
+                  friendBtn
                     ? "add-btn fas fa-user-minus"
                     : "add-btn fas fa-user-plus"
                 }

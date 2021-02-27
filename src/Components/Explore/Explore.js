@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
 import { OdinBookContext } from "../Context";
 import ExploreCard from "./ExploreCard";
+import uniqid from "uniqid";
+import "./Explore.css";
 
 const Explore = () => {
   const {
@@ -14,8 +16,8 @@ const Explore = () => {
 
   const [error, setError] = useState("");
   const [result, setResult] = useState([]);
-  const [getLoading, setGetLoading] = useState(false);
-  const [get_friends_loading, setGet_friends_loading] = useState(false);
+  const [getLoading, setGetLoading] = useState(true);
+  const [get_friends_loading, setGet_friends_loading] = useState(true);
 
   const get_users = () => {
     let user_list_route = `/user_list`;
@@ -30,6 +32,7 @@ const Explore = () => {
     const cb_response = (response) => {
       setResult(response.data);
       setGetLoading(false);
+      // console.log(response.data);
     };
 
     axios_request({
@@ -53,6 +56,7 @@ const Explore = () => {
     const cb_response = (response) => {
       setMyFriends(response.data);
       setGet_friends_loading(false);
+      // console.log(response.data);
     };
 
     axios_request({
@@ -68,29 +72,34 @@ const Explore = () => {
     get_users();
     if (didMyFriendsMount) {
       get_my_friends();
+      // console.log(75);
       setDidMyFriendsMount(false);
     } else {
       setGet_friends_loading(false);
+      // console.log(78);
       return;
     }
   }, []);
 
+  // console.log(getLoading, get_friends_loading);
+
   return (
     <div className="Explore">
       {error && <div className="error">{error}</div>}
-      {!error && getLoading && "laoding.."}
-      {!error &&
-        !getLoading &&
-        !get_friends_loading &&
-        result.map((value, index) => {
-          {
-            /* const check = myFriends.find */
-          }
 
-          {
-            /* return <ExploreCard value={value} index={index} />; */
-          }
-        })}
+      {!error && <h2 className="title-msg">People you might know.</h2>}
+      {!error && !getLoading && !get_friends_loading && (
+        <>
+          {result.map((value, index) => {
+            //we will only show users who are not my(logged-in user) friends
+
+            const isFriend = myFriends.find((x) => x._id === value._id);
+            if (!isFriend && jwtData.sub !== value._id) {
+              return <ExploreCard value={value} index={index} key={uniqid()} />;
+            }
+          })}
+        </>
+      )}
     </div>
   );
 };

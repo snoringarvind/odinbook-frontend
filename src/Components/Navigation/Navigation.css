@@ -20,7 +20,7 @@
 }
 
 .Navigation .SearchBar {
-  border: 1px solid blue;
+  /* border: 1px solid blue; */
   width: 60%;
   padding: 10px;
   display: flex;
@@ -63,7 +63,7 @@
   display: flex;
   justify-content: space-evenly;
   width: 40%;
-  border: 1px solid;
+  /* border: 1px solid; */
   /* border: 1px solid rgb(220, 246, 255); */
 }
 
