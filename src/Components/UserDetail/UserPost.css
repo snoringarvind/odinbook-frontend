@@ -259,7 +259,6 @@
 .UserPost .share-icon {
   position: relative;
   cursor: pointer;
-  /* z-index: -1; */
 }
 
 .UserPost #copy {

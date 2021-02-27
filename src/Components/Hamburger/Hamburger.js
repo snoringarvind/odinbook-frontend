@@ -7,7 +7,7 @@ const Hamburger = () => {
   const { jwtData } = useContext(OdinBookContext);
 
   return (
-    <div className="Hamburger">
+    <div className="Hamburger" style={{ zIndex: "1" }}>
       <div className="box-1 box">
         <Link
           to={{
