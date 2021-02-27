@@ -1,6 +1,6 @@
 .Signup {
   /* border: 1px solid; */
-  /* min-height: 93vh; */
+  min-height: 93vh;
   position: relative;
   background-image: linear-gradient(to top, #fff1eb 0%, #ace0f9 100%);
 }
