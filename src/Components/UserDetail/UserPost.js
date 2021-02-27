@@ -136,7 +136,7 @@ const UserPost = ({ path }) => {
         setIsOwner(false);
       }
     }
-  }, [location.pathname, from]);
+  }, [location.pathname, from, myPosts]);
 
   useEffect(() => {
     if (path === "newsfeed") {
@@ -194,6 +194,7 @@ const UserPost = ({ path }) => {
   const post_delete_repsonse = (response) => {
     //as soon as we get the response delete the post from the screen
 
+    console.log(updateIndex);
     result.splice(updateIndex, 1);
     setResult(result);
 
