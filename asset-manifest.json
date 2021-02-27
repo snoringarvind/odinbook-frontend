@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/odinbook-frontend/static/css/main.e27abce4.chunk.css",
-    "main.js": "/odinbook-frontend/static/js/main.945ae9a2.chunk.js",
-    "main.js.map": "/odinbook-frontend/static/js/main.945ae9a2.chunk.js.map",
+    "main.css": "/odinbook-frontend/static/css/main.bb9a0b60.chunk.css",
+    "main.js": "/odinbook-frontend/static/js/main.c91e8a13.chunk.js",
+    "main.js.map": "/odinbook-frontend/static/js/main.c91e8a13.chunk.js.map",
     "runtime-main.js": "/odinbook-frontend/static/js/runtime-main.986f0acc.js",
     "runtime-main.js.map": "/odinbook-frontend/static/js/runtime-main.986f0acc.js.map",
     "static/js/2.d97c28b3.chunk.js": "/odinbook-frontend/static/js/2.d97c28b3.chunk.js",
@@ -10,7 +10,7 @@
     "static/js/3.b05d7b52.chunk.js": "/odinbook-frontend/static/js/3.b05d7b52.chunk.js",
     "static/js/3.b05d7b52.chunk.js.map": "/odinbook-frontend/static/js/3.b05d7b52.chunk.js.map",
     "index.html": "/odinbook-frontend/index.html",
-    "static/css/main.e27abce4.chunk.css.map": "/odinbook-frontend/static/css/main.e27abce4.chunk.css.map",
+    "static/css/main.bb9a0b60.chunk.css.map": "/odinbook-frontend/static/css/main.bb9a0b60.chunk.css.map",
     "static/js/2.d97c28b3.chunk.js.LICENSE.txt": "/odinbook-frontend/static/js/2.d97c28b3.chunk.js.LICENSE.txt",
     "static/media/Chat.css": "/odinbook-frontend/static/media/masaaki-komori-14cHwhRKJh8-unsplash.c527fd7d.jpg",
     "static/media/resume.c1548462.png": "/odinbook-frontend/static/media/resume.c1548462.png"
@@ -18,7 +18,7 @@
   "entrypoints": [
     "static/js/runtime-main.986f0acc.js",
     "static/js/2.d97c28b3.chunk.js",
-    "static/css/main.e27abce4.chunk.css",
-    "static/js/main.945ae9a2.chunk.js"
+    "static/css/main.bb9a0b60.chunk.css",
+    "static/js/main.c91e8a13.chunk.js"
   ]
 }
