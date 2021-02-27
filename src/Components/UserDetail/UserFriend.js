@@ -105,7 +105,7 @@ const UserFriend = ({ path }) => {
       {!error && (
         <>
           {getLoading && (
-            <div className="loading-container">
+            <div className="loading-container" style={{ zIndex: "1" }}>
               <div className="spinner-border loading" role="status">
                 <span className="sr-only"></span>
               </div>

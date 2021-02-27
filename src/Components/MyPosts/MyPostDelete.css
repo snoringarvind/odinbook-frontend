@@ -67,3 +67,12 @@
 .MyPostDelete .btn .dlt-btn:hover {
   background-color: darkred;
 }
+
+@media all and (min-width: 700px) {
+  .MyPostDelete .dialog-box,
+  .MyPostDelete .error {
+    width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

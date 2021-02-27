@@ -74,7 +74,7 @@
   color: rgb(126, 126, 126);
   align-items: center;
   position: relative;
-  z-index: -1;
+  /* z-index: -1; */
 }
 
 .UserPost .UserPostCard .head .hamburger-menu {
