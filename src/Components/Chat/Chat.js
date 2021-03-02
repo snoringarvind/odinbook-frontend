@@ -166,11 +166,13 @@ const Chat = () => {
   };
 
   useEffect(() => {
-    const element = document.querySelector(".Chat");
+    const element = document.querySelector(".ChatCard .chat-map-container");
 
-    const height = element.scrollHeight;
+    if (element) {
+      const height = element.scrollHeight;
 
-    element.scrollTo(0, height);
+      element.scrollTo(0, height);
+    }
   }, [msgArr]);
 
   return (
@@ -185,15 +187,24 @@ const Chat = () => {
               </div>
             </div>
           )}
+          <div className="head-top">
+            <div className="profile-picture">{[...fname][0].toLowerCase()}</div>
+            <div className="name">
+              <span>{fname} </span>
+              <span>{lname}</span>
+            </div>
+          </div>
           {!mymsgloading && !responseloading && (
-            <ChatCard
-              fname={fname}
-              lname={lname}
-              userid={userid}
-              username={username}
-              msgArr={msgArr}
-              setMsgArr={setMsgArr}
-            />
+            <>
+              <ChatCard
+                fname={fname}
+                lname={lname}
+                userid={userid}
+                username={username}
+                msgArr={msgArr}
+                setMsgArr={setMsgArr}
+              />
+            </>
           )}
         </>
       )}

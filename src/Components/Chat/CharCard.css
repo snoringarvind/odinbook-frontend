@@ -1,0 +1,41 @@
+.ChatCard .chat-map-container {
+  overflow-y: auto;
+  height: 79vh;
+}
+
+.ChatCard form {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 7vh;
+  background-color: black;
+  display: flex;
+  align-items: center;
+  padding: 0 5px;
+}
+
+.ChatCard .form-group {
+  display: flex;
+  width: 100%;
+}
+
+.ChatCard form input {
+  width: 100%;
+  font-size: 1.2rem;
+  border-radius: 15px;
+  height: 6vh;
+  outline: none;
+  border: none;
+  padding: 2px 15px;
+}
+
+.ChatCard .send-btn button {
+  height: 6vh;
+  border: none;
+  padding: 0 10px;
+  border-radius: 10px;
+  font-weight: bold;
+  color: white;
+  background-color: green;
+}

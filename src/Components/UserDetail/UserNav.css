@@ -8,6 +8,7 @@
   font-size: 1.3rem;
   background-color: white;
   border-radius: 4px;
+  /* z-index: 1; */
 }
 
 .UserNav .nav-links a {
@@ -23,12 +24,4 @@
 .UserNav .nav-links.active a {
   color: blue;
   border-bottom: 2.5px solid blue;
-}
-
-.UserNav {
-  position: sticky;
-  top: 0;
-  /* border: 1px solid; */
-  /* z-index: 1; */
-  background-color: white;
 }

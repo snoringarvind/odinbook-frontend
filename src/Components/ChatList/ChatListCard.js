@@ -59,9 +59,12 @@ const ChatListCard = ({ value, index, isRead }) => {
             </div>
 
             <div className="time">
-              <span>{hour > 12 ? hour - 12 : hour === 0 ? 12 : hour}:</span>
+              <span>{hour > 12 && hour - 12}:</span>
+              <span>{hour === 0 ? 12 : hour}</span>
 
+              {/* for  0 to 09 minute */}
               <span>{minute < 10 ? "0" + minute : minute}</span>
+
               <span>{hour > 12 ? "pm" : "am"}</span>
             </div>
           </div>

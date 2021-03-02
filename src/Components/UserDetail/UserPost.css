@@ -74,7 +74,7 @@
   color: rgb(126, 126, 126);
   align-items: center;
   position: relative;
-  /* z-index: -1; */
+  z-index: -1;
 }
 
 .UserPost .UserPostCard .head .hamburger-menu {
@@ -228,22 +228,14 @@
 
 .UserPost:not(.UserPost.myaccount) {
   /* border: 1px solid red; */
-  /* margin-top: 7vh; */
-  height: 92vh;
+  margin-top: 7vh;
+  height: 93vh;
   overflow-y: auto;
 }
 
 .UserPost.myaccount {
   margin-top: 0;
-  /* border: 1px solid green; */
-  /* overflow-y: hidden; */
-  /* min-height: 100vh; */
-  /* height: 100vh; */
   height: fit-content;
-}
-
-.UserPost {
-  margin-top: 8vh;
 }
 
 .UserPost .post-date {
@@ -313,10 +305,7 @@
 @media all and (min-width: 700px) {
   .UserPost {
     width: 700px;
-    /* margin: 7vh auto; */
     margin-left: auto;
     margin-right: auto;
-    /* border-left: 1px solid; */
-    /* border-right: 1px solid; */
   }
 }

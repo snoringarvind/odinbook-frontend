@@ -2,6 +2,7 @@ import React, { useState, useContext, useRef } from "react";
 import { OdinBookContext } from "../Context";
 import ChatMap from "./ChatMap";
 import uniqid from "uniqid";
+import "./CharCard.css";
 
 const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
   const valueRef = useRef();
@@ -155,12 +156,10 @@ const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
       {error && <div className="error">{error}</div>}
       {!error && (
         <>
-          <div className="head-top">
-            <div className="profile-picture">{[...fname][0].toLowerCase()}</div>
-            <div className="name">
-              <span>{fname} </span>
-              <span>{lname}</span>
-            </div>
+          <div className="chat-map-container">
+            {msgArr.map((value, index) => {
+              return <ChatMap value={value} index={index} key={uniqid()} />;
+            })}
           </div>
           <form autoComplete="off">
             <div className="form-group">
@@ -195,12 +194,6 @@ const ChatCard = ({ fname, lname, userid, username, msgArr, setMsgArr }) => {
               </div>
             </div>
           </form>
-
-          <div className="chat-map-container">
-            {msgArr.map((value, index) => {
-              return <ChatMap value={value} index={index} key={uniqid()} />;
-            })}
-          </div>
         </>
       )}
     </div>

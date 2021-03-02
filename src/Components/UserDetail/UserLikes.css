@@ -132,3 +132,11 @@
   font-size: 25px;
   color: black;
 }
+
+@media all and (min-width: 700px) {
+  .UserLikes .box {
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

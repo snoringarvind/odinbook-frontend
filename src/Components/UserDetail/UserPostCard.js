@@ -22,13 +22,13 @@ const UserPostCard = ({
   setDeleteClick,
   deleteClick,
   setPostIndex,
-  // likeClick,
-  // setLikeClick,
+  likeClick,
+  setLikeClick,
   postsLength,
   UserLikedIndex,
   setUsersLikedIndex,
-  // likeLength,
-  // setLikeLength,
+  likeLength,
+  setLikeLength,
   path,
   result,
   setResult,
@@ -50,8 +50,6 @@ const UserPostCard = ({
   const [comments, setComments] = useState([]);
 
   // const [UserLikedIndex, setUsersLikedIndex] = useState(false);
-  const [likeLength, setLikeLength] = useState([]);
-  const [likeClick, setLikeClick] = useState([]);
 
   const location = useLocation();
 
