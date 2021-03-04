@@ -96,12 +96,24 @@ const UserFriend = ({ path }) => {
     }
   }, [location.pathname]);
 
+  // console.log(username);
   return (
     <div
       className={path === "myfriends" ? "UserFriend" : "UserFriend myaccount"}
     >
       {error && <div className="error">{error}</div>}
-      {!error && <h2 className="title-msg">My Friends.</h2>}
+      {!error && (
+        <h2 className="title-msg">
+          {path === "myfriends" && "MyFriends"}
+          {path !== "myfriends" && jwtData.sub !== userid && (
+            <>
+              <span>{fname}'s</span>
+              <span> friends</span>
+            </>
+          )}
+          {path !== "myfriends" && jwtData.sub === userid && "MyFriends"}
+        </h2>
+      )}
       {!error && (
         <>
           {getLoading && (

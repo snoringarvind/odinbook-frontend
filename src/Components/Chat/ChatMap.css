@@ -107,6 +107,6 @@
 @media all and (max-device-width: 600px) {
   .ChatMap:last-child {
     /* border: 1px solid red; */
-    margin-bottom: 60px;
+    margin-bottom: max(7vh, 60px);
   }
 }
