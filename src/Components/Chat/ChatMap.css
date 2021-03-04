@@ -103,3 +103,10 @@
   margin-bottom: 10px;
   color: white;
 }
+
+@media all and (max-device-width: 600px) {
+  .ChatMap:last-child {
+    /* border: 1px solid red; */
+    margin-bottom: 45px;
+  }
+}

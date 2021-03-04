@@ -1,6 +1,7 @@
 .ChatCard .chat-map-container {
   overflow-y: auto;
   height: 79vh;
+  /* border: 1px solid; */
 }
 
 .ChatCard form {
