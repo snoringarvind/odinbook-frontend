@@ -1,5 +1,5 @@
 .Chat .head-top {
-  margin-top: 7vh;
+  margin-top: max(7vh, 45px);
   height: max(7vh, 45px);
   display: flex;
   background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);

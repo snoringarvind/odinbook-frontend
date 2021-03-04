@@ -227,8 +227,8 @@
 
 .UserPost:not(.UserPost.myaccount) {
   /* border: 1px solid red; */
-  margin-top: max(7vh, 45px);
-  height: 93vh;
+  margin-top: max(8vh, 50px);
+  height: 92vh;
   overflow-y: auto;
 }
 
