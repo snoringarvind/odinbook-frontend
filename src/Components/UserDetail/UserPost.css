@@ -227,7 +227,7 @@
 
 .UserPost:not(.UserPost.myaccount) {
   /* border: 1px solid red; */
-  margin-top: max(8vh, 50px);
+  margin-top: max(7vh, 45px);
   height: 92vh;
   overflow-y: auto;
 }
@@ -298,6 +298,11 @@
     min-width: 40px;
     max-width: 40px;
     font-size: 1rem;
+  }
+  .UserPost:not(.UserPost.myaccount) {
+    margin-top: max(8vh, 60px);
+    height: 92vh;
+    overflow-y: auto;
   }
 }
 
