@@ -8,11 +8,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 7vh;
+  height: min(7vh, 50px);
   background-color: black;
   display: flex;
   align-items: center;
   padding: 0 5px;
+  /* border: 1px solid red; */
 }
 
 .ChatCard .form-group {
@@ -24,14 +25,14 @@
   width: 100%;
   font-size: 1.2rem;
   border-radius: 15px;
-  height: 20px;
+  height: 30px;
   outline: none;
   border: none;
   padding: 2px 15px;
 }
 
 .ChatCard .send-btn button {
-  height: 20px;
+  height: 30px;
   border: none;
   padding: 0 10px;
   border-radius: 10px;

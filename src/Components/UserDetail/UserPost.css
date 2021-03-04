@@ -1,7 +1,6 @@
 .UserPost .UserPostCard {
   padding: 20px;
   border-bottom: 1px solid lightgray;
-  /* border: 1px solid red; */
   margin: 1.3vh 1vh;
   /* background-color: white; */
   /* background-image: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%); */
@@ -228,7 +227,7 @@
 
 .UserPost:not(.UserPost.myaccount) {
   /* border: 1px solid red; */
-  margin-top: 7vh;
+  margin-top: min(7vh, 50px);
   height: 93vh;
   overflow-y: auto;
 }

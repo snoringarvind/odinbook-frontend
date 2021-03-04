@@ -29,7 +29,7 @@ import Explore from "../Explore/Explore";
 const Home = () => {
   let location = useLocation();
   let background = location.state && location.state.background;
-  const [isClick, setIsclick] = useState(false);
+  // const [isClick, setIsclick] = useState(true);
 
   const { isAuthValue, jwtData } = useContext(OdinBookContext);
   const [isAuth, setIsAuth] = isAuthValue;
@@ -37,32 +37,25 @@ const Home = () => {
   const path = location.pathname;
 
   //doing this if /search/:name;
-  const search_url_params = location.pathname.split("/")[1];
+  // const search_url_params = location.pathname.split("/")[1];
 
-  //doing this if-block, incase if the user refreshes the page the state will vanish so we will store the previous state values in localstorage
-  if (
-    path !== "/" &&
-    path !== "/friends" &&
-    path !== "/mychat" &&
-    search_url_params !== "search" &&
-    path !== "/login" &&
-    path !== "/signup"
-  ) {
-    if (location.state) {
-      localStorage.setItem(
-        "local_history",
-        JSON.stringify({
-          userid: location.state.userid,
-          fname: location.state.fname,
-          lname: location.state.lname,
-          username: location.state.username,
-          from: path,
-        })
-      );
-    }
-    //this else block is for when the user logs in
-  } else if (isAuth && (path === "/signup" || path === "/login")) {
-    // console.log("hellllooooo");
+  console.log(path);
+
+  if (location.state) {
+    localStorage.setItem(
+      "local_history",
+      JSON.stringify({
+        userid: location.state.userid,
+        fname: location.state.fname,
+        lname: location.state.lname,
+        username: location.state.username,
+        from: path,
+      })
+    );
+  }
+  //this else block is for when the user logs in
+  // }
+  else if (isAuth && (path === "/signup" || path === "/login")) {
     localStorage.setItem(
       "local_history",
       JSON.stringify({
@@ -76,42 +69,6 @@ const Home = () => {
   }
 
   // console.log(JSON.parse(localStorage.getItem("local_history")));
-  useEffect(() => {
-    const x = window;
-    x.addEventListener("click", (e) => {
-      //maybe if something goes wrong ..putting this in a try,catch block
-      try {
-        e.stopPropagation();
-        e.preventDefault();
-        let arr = e.target.classList;
-
-        for (let i = 0; i < arr.length; i++) {
-          let element = document.querySelector(`.${arr[i]}`);
-
-          // doing this 'if(element==null)' so if the form-btn is clicked cancel this function shouldn't be affected.
-          //since the form-btn will be null when it is closed, so to prevent the error
-          if (element == null) {
-            return;
-          }
-
-          let p = element.classList;
-          if (
-            p[i].toString() !== "drop-btn" &&
-            p[i] !== null &&
-            p[i] !== "ham-icon" &&
-            p[i] !== "close-icon"
-          ) {
-            setIsclick(false);
-          }
-          arr = [];
-        }
-
-        arr = [];
-      } catch (err) {
-        console.log(err.message);
-      }
-    });
-  }, []);
 
   return (
     <div className="Home">

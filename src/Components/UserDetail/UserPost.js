@@ -59,8 +59,9 @@ const UserPost = ({ path }) => {
   let fname;
   let lname;
   let from;
-  if (path == "userpost") {
-    const local_history = JSON.parse(localStorage.getItem("local_history"));
+
+  const local_history = JSON.parse(localStorage.getItem("local_history"));
+  if (path === "userpost") {
     userid = local_history.userid;
     fname = local_history.fname;
     lname = local_history.lname;
@@ -70,7 +71,7 @@ const UserPost = ({ path }) => {
   // console.log(getLoading);
   const get_posts = () => {
     let post_list_route;
-    if (path == "userpost") {
+    if (path === "userpost") {
       post_list_route = `/posts/${userid}`;
     } else if (path === "newsfeed") {
       post_list_route = "/news-feed";
@@ -83,7 +84,7 @@ const UserPost = ({ path }) => {
       setGetLoading(false);
     };
     const cb_response = (response) => {
-      if (path == "newsfeed") {
+      if (path === "newsfeed") {
         setMyNewsFeed(response.data);
       } else {
         if (userid === jwtData.sub) {
@@ -108,7 +109,7 @@ const UserPost = ({ path }) => {
   };
 
   useEffect(() => {
-    if (path == "userpost") {
+    if (path === "userpost") {
       //herer if the url is news-feed , the userid will be undefined.
       if (userid !== jwtData.sub) {
         get_posts();
@@ -193,13 +194,13 @@ const UserPost = ({ path }) => {
   const post_delete_repsonse = (response) => {
     //as soon as we get the response delete the post from the screen
 
-    console.log(updateIndex);
+    // console.log(updateIndex);
 
-    console.log(myPosts);
+    // console.log(myPosts);
     myPosts.splice(updateIndex, 1);
     setMyPosts(myPosts);
     setResult(myPosts);
-    console.log(myPosts);
+    // console.log(myPosts);
 
     //we are doing this here bcoz jab tak child component mein value change nahi hota parent component re-render nahi hoga.
     //MyPostDelete meinn setDelteClick mein same component mein hi deleteClick value change karna pad raha tha isliye UserPost re-render nahi ho raha tha.
