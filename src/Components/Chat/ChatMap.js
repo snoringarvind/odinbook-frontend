@@ -35,6 +35,7 @@ const ChatMap = ({ value, index }) => {
                     {d.getHours() > 12 && d.getHours() - 12}
                     {d.getHours() <= 12 && d.getHours() !== 0 && d.getHours()}
                     {d.getHours() === 0 && "0" + d.getHours()}
+                    <span>:</span>
                   </span>
                   <span>
                     {d.getMinutes() < 10
